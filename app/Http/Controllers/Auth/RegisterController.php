@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8'],
 
             'nid' => ['required'],
             'phone' => ['required'],
@@ -111,10 +111,14 @@ class RegisterController extends Controller
         $user->permanent_area = $data['permanent_area'];
         $user->nid = $data['nid'];
         $user->passport = $data['passport'];
+        $user->role = 'house_owner';
         $user->save();
 
+        $user->assignRole('house_owner');
+
         $house = new House();
-        $house->House_Name = $data['House_Name'];
+        $house->owner_id = $user->id;
+        $house->name = $data['House_Name'];
         $house->house_number = $data['house_number'];
         $house->area = $data['area'];
         $house->co_area = $data['co_area'];

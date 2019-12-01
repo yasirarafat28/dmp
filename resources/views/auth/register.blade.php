@@ -3,6 +3,17 @@
 @section('content')
 <div class="container">
 
+    @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if($errors->any())
+        <div class="alert alert-danger">
+            {{ $errors->first() }}
+        </div>
+    @endif
+
     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="row justify-content-center">
@@ -71,6 +82,14 @@
                             <input type="text" class="form-control" name="name">
                         </div>
                         <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Password</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        <div class="form-group">
                             <label for="">Phone</label>
                             <input type="text" class="form-control" name="phone">
                         </div>
@@ -104,15 +123,24 @@
                         </div>
                         <div class="form-group">
                             <label for="">Date_of_Birth</label>
-                            <input type="text" class="form-control" name="dob">
+                            <input type="date" class="form-control" name="dob">
                         </div>
                         <div class="form-group">
                             <label for="">Gender</label>
-                            <input type="text" class="form-control" name="gender">
+                            <select name="gender" id="" class="form-control">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="others">Others</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Marital_Status</label>
-                            <input type="text" class="form-control" name="marital_status">
+                            <select class="form-control" name="marital_status" id="">
+                                <option>Select an option</option>
+                                <option value="married">Married</option>
+                                <option value="unmarried">Unmarried</option>
+                                <option value="divorced">Divorced</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Region</label>
@@ -134,7 +162,7 @@
                             <label for="">Passport_ID</label>
                             <input type="text" class="form-control" name="passport">
                         </div>
-                    
+
                     </div>
                 </div>
             </div>
