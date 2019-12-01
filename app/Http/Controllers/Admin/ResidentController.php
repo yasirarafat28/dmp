@@ -6,19 +6,16 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class UsersController extends Controller
+class ResidentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //
+
     public function index()
     {
         //
 
-        $records = User::where('role','dmp')->orderBy('created_at','DESC')->get();
-        return view('dmp.user',compact('records'));
+        $records = User::where('role','resident')->orderBy('created_at','DESC')->get();
+        return view('dmp.resident',compact('records'));
     }
 
     /**
@@ -54,7 +51,7 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password = bcrypt($request->password);
-        $user->role = 'dmp';
+        $user->role = 'resident';
         $user->save();
         return back()->withSuccess('Successfully Inserted');
     }
@@ -99,7 +96,7 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password = bcrypt($request->password);
-        $user->role = 'dmp';
+        $user->role = 'resident';
         $user->save();
         return back()->withSuccess('Successfully Modified');
     }

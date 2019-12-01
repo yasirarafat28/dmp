@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth','role:dmp'], 'prefix' => 'dmp'], function 
     Route::resource('notice', 'NoticeController');
     Route::resource('users', 'Admin\UsersController');
     Route::resource('houses', 'Admin\HouseController');
+    Route::resource('residents', 'Admin\ResidentController');
 
 });
 

@@ -5,6 +5,17 @@
 
     <div class="main-content" >
 					<div class="wrap-content container" id="container">
+
+                        @if(session()->has('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                {{ $errors->first() }}
+                            </div>
+                        @endif
 						<section id="page-title">
 							<div class="row">
 								<div class="col-sm-8">
@@ -36,12 +47,14 @@
 					                  </div>
 					                  <div class="modal-body">
 
-					                        <form method="POST" action="" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+					                        <form method="POST" action="{{url('dmp/users')}}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+
+                                                {{csrf_field()}}
 
                                                 <div class="form-group ">
                                                     <label for="name" class="col-md-4 control-label">Name</label>
                                                     <div class="col-md-6">
-                                                        <input class="form-control" name="admin_name" type="text" id="admin_name">
+                                                        <input class="form-control" name="name" type="text" id="admin_name">
 
                                                     </div>
                                                 </div>
@@ -49,34 +62,25 @@
                                                 <div class="form-group ">
                                                     <label for="name" class="col-md-4 control-label">Email</label>
                                                     <div class="col-md-6">
-                                                        <input class="form-control" name="admin_email" type="text">
+                                                        <input class="form-control" name="email" type="text">
 
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Username</label>
+                                                    <label for="name" class="col-md-4 control-label">Phone</label>
                                                     <div class="col-md-6">
-                                                        <input class="form-control" name="admin_username" type="text">
+                                                        <input class="form-control" name="phone" type="text">
 
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group ">
                                                     <label for="name" class="col-md-4 control-label">Password</label>
                                                     <div class="col-md-6">
-                                                        <input class="form-control" name="admin_password" type="password">
+                                                        <input class="form-control" name="password" type="password">
 
                                                     </div>
                                                 </div>
-
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Level</label>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" name="admin_level" type="text">
-
-                                                    </div>
-                                                </div>
-
 
 
 				                                <div class="form-group">
@@ -113,6 +117,7 @@
 												<td>{{$item->name}}</td>
 												<td>{{$item->email}}</td>
 												<td>{{$item->phone}}</td>
+												<td>{{$item->staus}}</td>
                                                 <td class="btn-group">
                                                     <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
                                                     {!! Form::open([
@@ -139,19 +144,42 @@
                                                                     <form method="POST" action="{{url('dmp/users/'.$item->id)}}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                                                                         {{csrf_field()}}
                                                                         {{method_field('PATCH')}}
+
                                                                         <div class="form-group ">
-                                                                            <label for="name" class="col-md-4 control-label">Title</label>
+                                                                            <label for="name" class="col-md-4 control-label">Name</label>
                                                                             <div class="col-md-6">
-                                                                                <input class="form-control" name="title" value="{{$item->title}}" type="text" id="admin_name">
+                                                                                <input class="form-control" name="name" type="text" id="admin_name" value="{{$item->name}}">
 
                                                                             </div>
                                                                         </div>
 
                                                                         <div class="form-group ">
-                                                                            <label for="name" class="col-md-4 control-label">Description</label>
+                                                                            <label for="name" class="col-md-4 control-label">Email</label>
                                                                             <div class="col-md-6">
-                                                                                <textarea name="description" class="form-control" id="" cols="30" rows="10">{{$item->description}}</textarea>
+                                                                                <input class="form-control" name="email" type="text" value="{{$item->email}}">
 
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group ">
+                                                                            <label for="name" class="col-md-4 control-label">Phone</label>
+                                                                            <div class="col-md-6">
+                                                                                <input class="form-control" name="phone" type="text"  value="{{$item->phone}}">
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group ">
+                                                                            <label for="name" class="col-md-4 control-label">Password</label>
+                                                                            <div class="col-md-6">
+                                                                                <input class="form-control" name="password" type="password">
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="form-group">
+                                                                            <div class="col-md-offset-4 col-md-8">
+                                                                                <input class="btn btn-primary btnusercreate btnper" type="submit" name="submit" value="Create">
                                                                             </div>
                                                                         </div>
 
@@ -164,9 +192,6 @@
 
                                                                     </form>
 
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CLOSE</button>
                                                                 </div>
                                                             </div>
                                                         </div>
