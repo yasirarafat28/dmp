@@ -28,3 +28,18 @@ Route::get('/about', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['middleware' => ['auth','role:dmp'], 'prefix' => 'dmp'], function () {
+    Route::get('dashboard', 'DashboardController@DmpDashboard')->name('DmpDashboard');
+    Route::resource('notice', 'NoticeController');
+    Route::resource('users', 'Admin\UsersController');
+    Route::resource('houses', 'Admin\HouseController');
+
+});
+
+
+Route::group(['middleware' => ['auth','role:house_owner'], 'prefix' => 'house-owner'], function () {
+    Route::get('dashboard', 'DashboardController@HouseOwnerDashboard')->name('HouseOwnerDashboard');
+
+});

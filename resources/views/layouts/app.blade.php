@@ -92,9 +92,15 @@
                             <a class="nav-link text-white" href="/login">Login</a>
                         </li>
                     @else
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/dmp/dashboard">Houses</a>
-                        </li>
+                        @if(\Illuminate\Support\Facades\Auth::user()->role=='dmp')
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/dmp/dashboard">Dashboard</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/house-owner/dashboard">Dashboard</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -129,32 +135,11 @@
     <!--modal Header End-->
 
 
-
-
-
-
-<div class="p-4">
+<div class="p-5">
 
 
     @yield('content')
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <footer>
