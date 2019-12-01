@@ -1,75 +1,11 @@
 
-				<?php include('inc/header.php');?>
 
-<?php $msg=""; 
-	if(isset($_GET['action'])&& isset($_GET['id']) && $_GET['action']=='delete'){
-		$action=$_GET['action'];
-		$id=$_GET['id'];
-		$delete_query="delete from house  WHERE house_id='".$id."'";
-		
-		if(mysqli_query($connect, $delete_query)){
-			$msg= 'Deleted Successfully';
-		}
-		else
-		{
-			$msg= 'Action Failed';
-			
-			
-		}
-	}
-	if(isset($_GET['action'])&& isset($_GET['id']) && $_GET['action']=='verify'){
-		$action=$_GET['action'];
-		$id=$_GET['id'];
-		$delete_query="update house set status='1' WHERE house_id='".$id."'";
-		
-		if(mysqli_query($connect, $delete_query)){
-			$msg= 'Verified Successfully';
-		}
-		else
-		{
-			$msg= 'Auction Failed';
-			
-			
-		}
-	}
+@extends('layouts.app_dmp')
+
+@section('content')
 
 
-
-	if(isset($_POST['submit']))
-	{
-        $sname=$_POST['name'];
-		$owner_name=$_POST['owner_name'];
-		$area=$_POST['area'];
-		$section=$_POST['section'];
-		$sector=$_POST['sector'];
-		$block=$_POST['block'];
-		$zip=$_POST['zip'];
-		$overview=$_POST['overview'];
-		$status=$_POST['status'];
-		$driver_nid=$_POST['driver_nid'];
-		$username=$_POST['username'];
-		$password=$_POST['password'];
-		
-		
-		  $submit_query="INSERT INTO `house`( `name`, `owner_name`, `area`, `sector`, `block`, `section`, `zip`, `overview`, `status`, `driver_nid`,username,password)
-		  VALUES('$sname','$owner_name','$area','$sector','$block','$section','$zip','$overview','$status','$driver_nid','$username','$password')";
-		  
-		if(mysqli_query($connect,$submit_query))
-			
-		{
-			$msg="House Successfully Inserted";
-			header('location: house.php');
-		}
-		else{
-			$msg=ENTRY_FAILED_MSG;
-		}
-		
-	}
-	
-?>
-
-
-				<div class="main-content" >
+    <div class="main-content" >
 					<div class="wrap-content container" id="container">
 						<section id="page-title">
 							<div class="row">
@@ -95,7 +31,7 @@
 
 					            <!-- Modal -->
 					            <div class="modal fade" id="modal-create">
-					              <div class="modal-dialog">
+					              <div class="modal-dialog modal-lg">
 					                <div class="modal-content">
 					                  <div class="modal-header">
 					                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -103,114 +39,163 @@
 					                    <h4 class="modal-title">Add New House</h4>
 					                  </div>
 					                  <div class="modal-body">
-					     
-					                        <form method="POST" action="" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
 
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">House Name</label>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" name="name" type="text" id="name">
-                                                          
-                                                    </div>
-                                                </div>
+                                          <form method="POST" action="{{url('dmp/houses')}}" enctype="multipart/form-data">
+                                              {{csrf_field()}}
+                                              <div class="row justify-content-center">
+                                                  <div class="col-md-6">
+                                                      <div class="card">
+                                                          <div class="card-header text-center">House Information</div>
 
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Owner Name</label>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" name="owner_name" type="text">
-                                                          
-                                                    </div>
-                                                </div>
+                                                          <div class="card-body">
 
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Area</label>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" name="area" type="text">
-                                                          
-                                                    </div>
-                                                </div>
+                                                              <div class="form-group">
+                                                                  <label for="">House_Name</label>
+                                                                  <input type="text" class="form-control" name="House_Name">
+                                                              </div>
 
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Sector</label>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" name="sector" type="text">
-                                                          
-                                                    </div>
-                                                </div>
+                                                              <div class="form-group">
+                                                                  <label for="">House_Number</label>
+                                                                  <input type="text" class="form-control" name="house_number">
+                                                              </div>
 
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Section</label>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" name="section" type="text">
-                                                          
-                                                    </div>
-                                                </div>
+                                                              <div class="form-group">
+                                                                  <label for="">House_Area</label>
+                                                                  <input type="text" class="form-control" name="area">
+                                                              </div>
 
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Block</label>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" name="block" type="text">
-                                                          
-                                                    </div>
-                                                </div>
+                                                              <div class="form-group">
+                                                                  <label for="">House_Co_Area</label>
+                                                                  <input type="text" class="form-control" name="co_area">
+                                                              </div>
 
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Zip Code</label>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" name="zip" type="number" id="name" step="any">
-                                                          
-                                                    </div>
-                                                </div>
+                                                              <div class="form-group">
+                                                                  <label for="">section_Area</label>
+                                                                  <input type="text" class="form-control" name="section">
+                                                              </div>
 
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Overview</label>
-                                                    <div class="col-md-6">
-                                                        <textarea class="form-control" name="overview"></textarea>
-                                                          
-                                                    </div>
-                                                </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Gate_Number</label>
+                                                                  <input type="text" class="form-control" name="gate_number">
+                                                              </div>
 
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Username</label>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" name="username" type="text">
-                                                          
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Driver NID</label>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" name="driver_nid" type="text">
+                                                              <div class="form-group">
+                                                                  <label for="">Road_Number</label>
+                                                                  <input type="text" class="form-control" name="road_number">
+                                                              </div>
 
-                                                    </div>
-                                                </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Number_for_Floor</label>
+                                                                  <input type="text" class="form-control" name="flat_qty">
+                                                              </div>
 
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Password</label>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" name="password" type="password">
-                                                          
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Status</label>
-                                                    <div class="col-md-6">
-                                                        <select class="form-control" name="status" id="">
-                                                        	<option value="1">Available</option>
-															<option value="2">Unavailable</option>
-                                                        </select>
-                                                          
-                                                    </div>
-                                                </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Description</label>
+                                                                  <input type="text" class="form-control" name="description">
+                                                              </div>
 
-				                                <div class="form-group">
-				                                    <div class="col-md-offset-4 col-md-8">
-				                                        <input class="btn btn-primary btnusercreate btnper" type="submit" name="submit" value="Create">
-				                                    </div>
-				                                </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                      <div class="card">
+                                                          <div class="card-header text-center">Personal Information</div>
 
-					                        </form>
-					                      </div>                    
+                                                          <div class="card-body">
+
+                                                              <div class="form-group">
+                                                                  <label for="">Owner Name</label>
+                                                                  <input type="text" class="form-control" name="name">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Email</label>
+                                                                  <input type="email" class="form-control" name="email">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Password</label>
+                                                                  <input type="password" class="form-control" name="password">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Phone</label>
+                                                                  <input type="text" class="form-control" name="phone">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Father_Name</label>
+                                                                  <input type="text" class="form-control" name="father">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Mother_Name</label>
+                                                                  <input type="text" class="form-control" name="mother">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Education</label>
+                                                                  <input type="text" class="form-control" name="education">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Occupation</label>
+                                                                  <input type="text" class="form-control" name="occupation">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Occupation_Type</label>
+                                                                  <input type="text" class="form-control" name="occupation_type">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Occupation_Institution</label>
+                                                                  <input type="text" class="form-control" name="occupation_institution">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Family_Member</label>
+                                                                  <input type="text" class="form-control" name="family_member">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Date_of_Birth</label>
+                                                                  <input type="date" class="form-control" name="dob">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Gender</label>
+                                                                  <select name="gender" id="" class="form-control">
+                                                                      <option value="male">Male</option>
+                                                                      <option value="female">Female</option>
+                                                                      <option value="others">Others</option>
+                                                                  </select>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Marital_Status</label>
+                                                                  <select class="form-control" name="marital_status" id="">
+                                                                      <option>Select an option</option>
+                                                                      <option value="married">Married</option>
+                                                                      <option value="unmarried">Unmarried</option>
+                                                                      <option value="divorced">Divorced</option>
+                                                                  </select>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Region</label>
+                                                                  <input type="text" class="form-control" name="region">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Permanent_Area</label>
+                                                                  <input type="text" class="form-control" name="permanent_area">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Present_Area</label>
+                                                                  <input type="text" class="form-control" name="present_area">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">National_ID</label>
+                                                                  <input type="text" class="form-control" name="nid">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Passport_ID</label>
+                                                                  <input type="text" class="form-control" name="passport">
+                                                              </div>
+
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <button type="submit" class="btn btn-primary mt-5 col-md-3">Submit</button>
+                                              </div>
+                                          </form>
+					                      </div>
 					                    </div>
 					                    <!-- /.modal-content -->
 					                  </div>
@@ -232,39 +217,102 @@
 										</tr>
 									</thead>
 									<tbody>
-										<?php
-										$sn=0;
-										$house_query="SELECT* FROM house";
-										$houses=mysqli_query($connect,$house_query);
-										foreach($houses as $house): ?>
-				                                    
-											<tr>
-												<td><?php  echo ++$sn;?></td>					
-												
-												<td><?php echo $house['name'];?></td>
-												<td><?php echo $house['owner_name'];?></td>
-												<td><?php echo $house['area'];?></td>
-												<td><?php echo $house['block'];?></td>
-												<td><?php echo $house['zip'];?></td>
-												<td>
-													
-													<div class="btn-group">
-														<a href="<?php echo ADMIN_URL."house.php?action=delete&id=".$house['house_id'];?>" onclick="return confirm('Are you sure??');">Delete</a>
-														<?php if ($house['status']==0) {
-															?>
-														<a href="<?php echo ADMIN_URL."house.php?action=verify&id=".$house['house_id'];?>" >Verify</a>
-														<?php } ?>
-													</div>
-												</td>
-											</tr>
-										<?php endforeach;?>
+                                        @foreach($records as $key=>$item)
+                                            <tr>
+                                                <td>{{++$key}}</td>
+                                                <td>{{$item->name??''}}</td>
+                                                <td>{{$item->owner->name??''}}</td>
+                                                <td>{{$item->area??''}}</td>
+                                                <td>{{$item->co_area??''}}</td>
+                                                <td>{{$item->section??''}}</td>
+                                                <td class="btn-group">
+                                                    <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
+                                                    {!! Form::open([
+                                                                   'method'=>'DELETE',
+                                                                   'url' => ['/dmp/houses', $item->id],
+                                                                   'style' => 'display:inline'
+                                                                ]) !!}
+                                                    {!! Form::button('Delete', array(
+                                                         'type' => 'submit',
+                                                         'onclick' => 'return confirm("Are you sure? ");',
+                                                         'class' => 'btn btn-danger btn-sm',
+                                                            'data-type'=>'confirm',
+                                                         )) !!}
+                                                    {!! Form::close() !!}
+
+
+                                                    <div class="modal fade" id="EditModal_{{$item->id}}" tabindex="-1" role="dialog">
+                                                        <div class="modal-dialog modal-lg" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="title" id="CreateModal">Modification of {{$item->title}}</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form method="POST" action="{{url('dmp/houses/'.$item->id)}}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                                                        {{csrf_field()}}
+                                                                        {{method_field('PATCH')}}
+
+                                                                        <div class="form-group ">
+                                                                            <label for="name" class="col-md-4 control-label">Name</label>
+                                                                            <div class="col-md-6">
+                                                                                <input class="form-control" name="name" type="text" id="admin_name" value="{{$item->name}}">
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group ">
+                                                                            <label for="name" class="col-md-4 control-label">Email</label>
+                                                                            <div class="col-md-6">
+                                                                                <input class="form-control" name="email" type="text" value="{{$item->email}}">
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group ">
+                                                                            <label for="name" class="col-md-4 control-label">Phone</label>
+                                                                            <div class="col-md-6">
+                                                                                <input class="form-control" name="phone" type="text"  value="{{$item->phone}}">
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group ">
+                                                                            <label for="name" class="col-md-4 control-label">Password</label>
+                                                                            <div class="col-md-6">
+                                                                                <input class="form-control" name="password" type="password">
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="form-group">
+                                                                            <div class="col-md-offset-4 col-md-8">
+                                                                                <input class="btn btn-primary btnusercreate btnper" type="submit" name="submit" value="Create">
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="form-group">
+                                                                            <div class="col-md-offset-4 col-md-8">
+                                                                                <button class="btn btn-primary btnusercreate btnper" type="submit" name="submit" >Submit</button>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        @endforeach
 									</tbody>
 								</table>
 
-								
+
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-	<?php include('inc/footer.php');?>
+@endsection

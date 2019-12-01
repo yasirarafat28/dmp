@@ -81,9 +81,6 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="/house">Houses</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/house">Houses</a>
-                    </li>
                     @guest
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/register">Register Your House</a>

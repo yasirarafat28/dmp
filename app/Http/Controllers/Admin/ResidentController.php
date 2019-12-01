@@ -51,6 +51,9 @@ class ResidentController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password = bcrypt($request->password);
+
+
+
         $user->role = 'resident';
         $user->save();
         return back()->withSuccess('Successfully Inserted');
@@ -96,6 +99,8 @@ class ResidentController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password = bcrypt($request->password);
+
+        
         $user->role = 'resident';
         $user->save();
         return back()->withSuccess('Successfully Modified');
