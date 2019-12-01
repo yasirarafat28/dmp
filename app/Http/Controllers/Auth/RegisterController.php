@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\House;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -52,7 +53,30 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+
+            'nid' => ['required'],
+            'phone' => ['required'],
+            'father' => ['required'],
+            'mother' => ['required'],
+            'education' => ['required'],
+            'occupation' => ['required'],
+            'occupation_type' => ['required'],
+            'occupation_institution' => ['required'],
+            'family_member' => ['required'],
+            'dob' => ['required'],
+            'region' => ['required'],
+            'permanent_area' => ['required'],
+            'passport' => ['required'],
+            'House_Name' => ['required'],
+            'house_number' => ['required'],
+            'area' => ['required'],
+            'co_area' => ['required'],
+            'section' => ['required'],
+            'gate_number' => ['required'],
+            'road_number' => ['required'],
+            'flat_qty' => ['required'],
+            'description' => ['required'],
+             ]);
     }
 
     /**
@@ -72,8 +96,32 @@ class RegisterController extends Controller
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
-        $user->name = $data['name'];
+        $user->phone = $data['phone'];
+        $user->father = $data['father'];
+        $user->mother = $data['mother'];
+        $user->education = $data['education'];
+        $user->occupation = $data['occupation'];
+        $user->occupation_type = $data['occupation_type'];
+        $user->occupation_institution = $data['occupation_institution'];
+        $user->family_member = $data['family_member'];
+        $user->dob = $data['dob'];
+        $user->region = $data['region'];
+        $user->permanent_area = $data['permanent_area'];
+        $user->nid = $data['nid'];
+        $user->passport = $data['passport'];
         $user->save();
+
+        $house = new House();
+        $house->House_Name = $data['House_Name'];
+        $house->house_number = $data['house_number'];
+        $house->area = $data['area'];
+        $house->co_area = $data['co_area'];
+        $house->section = $data['section'];
+        $house->gate_number = $data['gate_number'];
+        $house->road_number = $data['road_number'];
+        $house->flat_qty = $data['flat_qty'];
+        $house->description = $data['description'];
+        $house->save();
 
         return $user;
     }
