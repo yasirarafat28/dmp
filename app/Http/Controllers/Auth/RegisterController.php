@@ -104,6 +104,8 @@ class RegisterController extends Controller
         $user->occupation_type = $data['occupation_type'];
         $user->occupation_institution = $data['occupation_institution'];
         $user->family_member = $data['family_member'];
+        $user->gender = $data['gender'];
+        $user->marital_status = $data['marital_status'];
         $user->dob = $data['dob'];
         $user->region = $data['region'];
         $user->permanent_area = $data['permanent_area'];

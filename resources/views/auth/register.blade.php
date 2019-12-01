@@ -107,6 +107,14 @@
                             <input type="text" class="form-control" name="dob">
                         </div>
                         <div class="form-group">
+                            <label for="">Gender</label>
+                            <input type="text" class="form-control" name="gender">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Marital_Status</label>
+                            <input type="text" class="form-control" name="marital_status">
+                        </div>
+                        <div class="form-group">
                             <label for="">Region</label>
                             <input type="text" class="form-control" name="region">
                         </div>
