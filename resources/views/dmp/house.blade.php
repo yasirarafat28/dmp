@@ -284,11 +284,6 @@
                                                                         </div>
 
 
-                                                                        <div class="form-group">
-                                                                            <div class="col-md-offset-4 col-md-8">
-                                                                                <input class="btn btn-primary btnusercreate btnper" type="submit" name="submit" value="Create">
-                                                                            </div>
-                                                                        </div>
 
 
                                                                         <div class="form-group">

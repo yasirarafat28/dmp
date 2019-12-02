@@ -126,6 +126,7 @@ class HouseController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $user = House::destroy($id);
+        return back()->withSuccess('Successfully Deleted');
     }
 }
