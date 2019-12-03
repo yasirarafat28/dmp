@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\House;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -140,9 +141,24 @@ class ResidentController extends Controller
         $user->permanent_area = $request->permanent_area;
         $user->nid = $request->nid;
         $user->passport = $request->passport;
-        
         $user->role = 'resident';
         $user->save();
+
+        $user->assignRole('house_owner');
+
+        $house = new House();
+        $house->owner_id = $user->id;
+        $house->name = $request->House_Name;
+        $house->house_number = $request->house_number;
+        $house->area = $request->area;
+        $house->co_area = $request->co_area;
+        $house->section = $request->section;
+        $house->gate_number = $request->gate_number;
+        $house->road_number = $request->road_number;
+        $house->flat_qty = $request->flat_qty;
+        $house->description = $request->description;
+        $house->save();
+
         return back()->withSuccess('Successfully Modified');
     }
 
