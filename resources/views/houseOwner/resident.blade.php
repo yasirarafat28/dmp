@@ -1,6 +1,6 @@
 
 
-@extends('layouts.app_dmp')
+@extends('layouts.app_house_owner')
 
 @section('content')
 
@@ -101,7 +101,7 @@
                                                               </div>
 
                                                               <div class="form-group">
-                                                                  <label for="">Description</label>
+                                                                  <label for="">DescriptionC</label>
                                                                   <input type="text" class="form-control" name="description">
                                                               </div>
 

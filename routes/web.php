@@ -36,11 +36,14 @@ Route::group(['middleware' => ['auth','role:dmp'], 'prefix' => 'dmp'], function 
     Route::resource('users', 'Admin\UsersController');
     Route::resource('houses', 'Admin\HouseController');
     Route::resource('residents', 'Admin\ResidentController');
+    Route::resource('migrations', 'Admin\MigrationController');
 
 });
 
 
 Route::group(['middleware' => ['auth','role:house_owner'], 'prefix' => 'house-owner'], function () {
     Route::get('dashboard', 'DashboardController@HouseOwnerDashboard')->name('HouseOwnerDashboard');
+
+    Route::resource('residents', 'Admin\ResidentController');
 
 });

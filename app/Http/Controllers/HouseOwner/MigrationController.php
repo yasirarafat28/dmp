@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\House;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,8 +14,9 @@ class MigrationController extends Controller
      */
     public function index()
     {
-        $houses = House::all();
-        return view('dmp.migration',compact('houses'));
+        //
+
+        return view('dmp.migrations');
     }
 
     /**

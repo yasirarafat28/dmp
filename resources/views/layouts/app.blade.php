@@ -128,7 +128,6 @@
             */?>
         </marquee>
     </div>
-
     <!--modal Header End-->
 
 
@@ -219,7 +218,7 @@
     </script>
 
     <!--Datatable end-->
-
+</div>
 </body>
 </html>
 
