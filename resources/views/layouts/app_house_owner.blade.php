@@ -64,18 +64,7 @@
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="dashboard">
-                                    <div class="item-content">
-                                        <div class="item-media">
-                                            <i class="ti-home"></i>
-                                        </div>
-                                        <div class="item-inner">
-                                            <span class="title"> <a href="/house-owner/houses">Houses</a> </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+
                             <li>
                                 <a href="dashboard">
                                     <div class="item-content">
@@ -100,18 +89,7 @@
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="dashboard">
-                                    <div class="item-content">
-                                        <div class="item-media">
-                                            <i class="ti-home"></i>
-                                        </div>
-                                        <div class="item-inner">
-                                            <span class="title"> <a href="/house-owner/users">User Setting</a> </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+
                             <li>
                                 <a href="dashboard">
                                     <div class="item-content">
@@ -120,18 +98,6 @@
                                         </div>
                                         <div class="item-inner">
                                             <span class="title"> <a href="/house-owner/notice">NoticeBoard</a> </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="dashboard">
-                                    <div class="item-content">
-                                        <div class="item-media">
-                                            <i class="ti-home"></i>
-                                        </div>
-                                        <div class="item-inner">
-                                            <span class="title"> <a href="/house-owner/developers">Developers</a> </span>
                                         </div>
                                     </div>
                                 </a>

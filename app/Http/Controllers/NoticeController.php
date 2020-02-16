@@ -20,6 +20,14 @@ class NoticeController extends Controller
 
         return view('dmp.notice',compact('records'));
     }
+   public function indexHouse()
+    {
+        //
+
+        $records = Notice::orderBy('created_at','DESC')->get();
+
+        return view('houseOwner.notice',compact('records'));
+    }
 
     /**
      * Show the form for creating a new resource.

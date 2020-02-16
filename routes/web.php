@@ -49,6 +49,10 @@ Route::group(['middleware' => ['auth','role:dmp'], 'prefix' => 'dmp'], function 
 Route::group(['middleware' => ['auth','role:house_owner'], 'prefix' => 'house-owner'], function () {
     Route::get('dashboard', 'DashboardController@HouseOwnerDashboard')->name('HouseOwnerDashboard');
 
-    Route::resource('residents', 'Admin\ResidentController');
+    Route::resource('residents', 'HouseOwner\ResidentController');
+    Route::get('notice', 'NoticeController@indexHouse');
+    Route::resource('residents', 'HouseOwner\ResidentController');
+    Route::resource('migrations', 'HouseOwner\MigrationController');
+    Route::get('developers', 'HomeController@auth_developer');
 
 });
