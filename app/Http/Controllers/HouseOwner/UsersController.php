@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\House;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class MigrationController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,10 @@ class MigrationController extends Controller
      */
     public function index()
     {
-        $houses = House::all();
-        return view('dmp.migration',compact('houses'));
+        //
+
+        $records = User::where('role','dmp')->orderBy('created_at','DESC')->get();
+        return view('houseOwner.user',compact('records'));
     }
 
     /**
@@ -38,6 +40,23 @@ class MigrationController extends Controller
     public function store(Request $request)
     {
         //
+
+
+        $request->validate([
+
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $user = new  User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = bcrypt($request->password);
+        $user->role = 'dmp';
+        $user->save();
+        return back()->withSuccess('Successfully Inserted');
     }
 
     /**
@@ -72,6 +91,17 @@ class MigrationController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+
+
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = bcrypt($request->password);
+        $user->role = 'dmp';
+        $user->save();
+        return back()->withSuccess('Successfully Modified');
     }
 
     /**
@@ -83,5 +113,9 @@ class MigrationController extends Controller
     public function destroy($id)
     {
         //
+
+
+        $user = User::destroy($id);
+        return back()->withSuccess('Successfully Deleted');
     }
 }
