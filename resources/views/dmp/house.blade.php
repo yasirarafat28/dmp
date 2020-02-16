@@ -211,9 +211,11 @@
 											<th>House Name</th>
 											<th>Owner Name</th>
 											<th>Area</th>
-											<th>Block</th>
+											<th>House Co_Area</th>
 											<th>section Area</th>
 											<th>Gate Number</th>
+											<th>Road Number</th>
+											<th>National ID</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -225,10 +227,13 @@
                                                 <td>{{$item->owner->name??''}}</td>
                                                 <td>{{$item->area??''}}</td>
                                                 <td>{{$item->co_area??''}}</td>
-                                                <td>{{$item->gate_number??''}}</td>
                                                 <td>{{$item->section??''}}</td>
+                                                <td>{{$item->gate_number??''}}</td>
+                                                <td>{{$item->road_number??''}}</td>
+                                                <td>{{$item->owner->nid??''}}</td>
                                                 <td class="btn-group">
                                                     <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
+                                                    <a href="#" data-toggle="modal" data-target="#ShowModal_{{$item->id}}" class="btn btn-primary btn-sm">Show</a>
                                                     {!! Form::open([
                                                                    'method'=>'DELETE',
                                                                    'url' => ['/dmp/houses', $item->id],
@@ -247,7 +252,7 @@
                                                         <div class="modal-dialog modal-lg" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="title" id="CreateModal">Modification of {{$item->title}}</h4>
+                                                                    <h4 class="title" id="CreateModal">Modification of {{$item->name}}</h4>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <form method="POST" action="{{url('dmp/houses/'.$item->id)}}" enctype="multipart/form-data">
@@ -413,6 +418,126 @@
                                                                           </div>
                 
                                                                     </form>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="ShowModal_{{$item->id}}" tabindex="-1" role="dialog">
+                                                        <div class="modal-dialog modal-lg" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="title" id="CreateModal">Preview of {{$item->name}}</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <table class="table table-striped">
+                                                                        <tbody>
+
+                                                                            <tr>
+                                                                                <td>House Name</td>
+                                                                                <td>{{$item->name}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>House_Number</td>
+                                                                                <td>{{$item->house_number}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>House_Area</td>
+                                                                                <td>{{$item->area}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>House_Co_Area</td>
+                                                                                <td>{{$item->co_area}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>section_Area</td>
+                                                                                <td>{{$item->section}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Gate_Number</td>
+                                                                                <td>{{$item->gate_number}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Road_Number</td>
+                                                                                <td>{{$item->road_number}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Number_for_Floor</td>
+                                                                                <td>{{$item->flat_qty}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Description</td>
+                                                                                <td>{{$item->description}}</td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>Owner Name</td>
+                                                                                <td>{{$item->owner->name??'Unknown'}}</td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>Email</td>
+                                                                                <td>{{$item->owner->email??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Phone</td>
+                                                                                <td>{{$item->owner->phone??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Father_Name</td>
+                                                                                <td>{{$item->owner->father??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Mother_Name</td>
+                                                                                <td>{{$item->owner->mother??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Education</td>
+                                                                                <td>{{$item->owner->education??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Occupation</td>
+                                                                                <td>{{$item->owner->occupation??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Occupation_Institution</td>
+                                                                                <td>{{$item->owner->occupation_institution??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Family_Member</td>
+                                                                                <td>{{$item->owner->family_member??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Gender</td>
+                                                                                <td>{{$item->owner->gender??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Marital_Status</td>
+                                                                                <td>{{$item->owner->marital_status??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Region</td>
+                                                                                <td>{{$item->owner->region??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Permanent_Area</td>
+                                                                                <td>{{$item->owner->permanent_area??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Present_Area</td>
+                                                                                <td>{{$item->owner->present_area??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>National_ID</td>
+                                                                                <td>{{$item->owner->nid??'Unknown'}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Passport_ID</td>
+                                                                                <td>{{$item->owner->passport??'Unknown'}}</td>
+                                                                            </tr>
+
+                                                                        </tbody>
+                                                                    </table>
 
                                                                 </div>
                                                             </div>
