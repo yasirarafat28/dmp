@@ -100,7 +100,7 @@ class ResidentController extends Controller
         $user->phone = $request->phone;
         $user->password = bcrypt($request->password);
 
-        
+
         $user->role = 'resident';
         $user->save();
         return back()->withSuccess('Successfully Modified');
