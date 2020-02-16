@@ -209,19 +209,17 @@
 
 
                 @yield('content')
+                <footer>
+                    <div class="footer-inner">
+                        <div class="pull-left">
+                            &copy; <span class="current-year"></span><span class="text-bold text-uppercase">Dhaka Metropolitan Police</span>. <span>Copyright © 2019 . SE Project Group -2</span>
+                        </div>
+                        <div class="pull-right">
+                            <span class="go-top"><i class="ti-angle-up"></i></span>
+                        </div>
+                    </div>
+                </footer>
             </div>
-
-
-            <footer>
-                <div class="footer-inner">
-                    <div class="pull-left">
-                        &copy; <span class="current-year"></span><span class="text-bold text-uppercase">Dhaka Metropolitan Police</span>. <span>Copyright © 2019 . SE Project Group -2</span>
-                    </div>
-                    <div class="pull-right">
-                        <span class="go-top"><i class="ti-angle-up"></i></span>
-                    </div>
-                </div>
-            </footer>
         </div>
         <script>
             jQuery(document).ready(function() {
@@ -240,6 +238,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -292,9 +291,6 @@
                 } );
             } );
         </script>
-
-        <!--Datatable end-->
-
-</body>
+    </body>
 </html>
 
