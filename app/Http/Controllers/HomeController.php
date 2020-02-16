@@ -30,4 +30,14 @@ class HomeController extends Controller
 
         return view('front/about');
     }
+    public function developer()
+    {
+
+        return view('front/developer');
+    }
+    public function auth_developer()
+    {
+
+        return view('dmp.developer');
+    }
 }

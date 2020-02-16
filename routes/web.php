@@ -24,6 +24,10 @@ Route::get('/developer', function () {
 Route::get('/about', function () {
     return view('front/about');
 });
+Route::get('/house', function () {
+    $records = \App\House::with('owner')->get();
+    return view('front/house',compact('records'));
+});
 
 Auth::routes();
 
@@ -37,6 +41,7 @@ Route::group(['middleware' => ['auth','role:dmp'], 'prefix' => 'dmp'], function 
     Route::resource('houses', 'Admin\HouseController');
     Route::resource('residents', 'Admin\ResidentController');
     Route::resource('migrations', 'Admin\MigrationController');
+    Route::get('developers', 'HomeController@auth_developer');
 
 });
 

@@ -24,6 +24,18 @@
 						</section>
 
 							<div class="container-fluid container-fullw bg-white">
+
+                                @if(session()->has('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                @if($errors->any())
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first() }}
+                                    </div>
+                                @endif
 							<div class="row">
 							      <a  data-toggle="modal" data-target="#modal-create" href="#" class=" btn btn-primary" title="Add New House" style="border-radius: 0px"><i class="fa fa-plus" aria-hidden="true"></i> New Migration</a>
 
@@ -39,13 +51,14 @@
 					                    <h4 class="modal-title">New Migration</h4>
 					                  </div>
 					                  <div class="modal-body">
-					     
+
 					                        <form method="POST" action="{{url('dmp/migrations')}}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                                {{csrf_field()}}
 
                                                 <div class="form-group ">
                                                     <label for="name" class="col-md-4 control-label">House</label>
                                                     <div class="col-md-6">
-                                                        
+
 														<select name="house_id" class="form-control">
                                                             @foreach($houses as $item)
                                                                 <option value="{{$item->id}}">{{$item->name}}</option>
@@ -56,11 +69,14 @@
 													</div>
                                                 </div>
                                                 <div class="form-group ">
-                                                    <label for="name" class="col-md-4 control-label">Resident NID</label>
+                                                    <label for="name" class="col-md-4 control-label">Resident</label>
                                                     <div class="col-md-6">
                                                         <select class="form-control"  name="resident_id">
+                                                            @foreach($residents as $item)
+                                                                <option value="{{$item->id}}">{{$item->name}}--{{$item->phone}}--{{$item->nid}}</option>
+                                                            @endforeach
 														</select>
-                                                          
+
                                                     </div>
                                                 </div>
 
@@ -73,19 +89,17 @@
                                                 <div class="form-group ">
                                                     <label for="name" class="col-md-4 control-label">Comments</label>
                                                     <div class="col-md-6">
-                                                        <textarea class="form-control" name="comment" id="" cols="30" rows="6"></textarea>
+                                                        <textarea class="form-control" name="comment" ></textarea>
                                                     </div>
                                                 </div>
 
 
-				                                <div class="form-group">
-				                                    <div class="col-md-offset-4 col-md-8">
-				                                        <input class="btn btn-primary btnusercreate btnper" type="submit" name="submit" value="Create">
-				                                    </div>
+				                                <div class="form-group col-md-12 text-center">
+                                                    <button class="btn btn-primary">Submit</button>
 				                                </div>
 
 					                        </form>
-					                      </div>                    
+					                      </div>
 					                    </div>
 					                    <!-- /.modal-content -->
 					                  </div>
@@ -106,10 +120,20 @@
 										</tr>
 									</thead>
 									<tbody>
+                                    @foreach($records as $row)
+                                        <tr>
+                                            <td>{{$row->id}}</td>
+                                            <td>{{$row->house->name??'Unknown'}}</td>
+                                            <td>{{$row->resident->name??'Unknown'}}</td>
+                                            <td>{{$row->flat_info}}</td>
+                                            <td>{{$row->description}}</td>
+                                            <td>{{$row->status}}</td>
+                                        </tr>
+                                    @endforeach
 									</tbody>
 								</table>
 
-								
+
 							</div>
 						</div>
 					</div>
