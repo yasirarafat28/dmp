@@ -212,7 +212,8 @@
 											<th>Owner Name</th>
 											<th>Area</th>
 											<th>Block</th>
-											<th>Zip Code</th>
+											<th>section Area</th>
+											<th>Gate Number</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -224,6 +225,7 @@
                                                 <td>{{$item->owner->name??''}}</td>
                                                 <td>{{$item->area??''}}</td>
                                                 <td>{{$item->co_area??''}}</td>
+                                                <td>{{$item->gate_number??''}}</td>
                                                 <td>{{$item->section??''}}</td>
                                                 <td class="btn-group">
                                                     <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
