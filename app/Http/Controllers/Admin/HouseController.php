@@ -152,6 +152,8 @@ class HouseController extends Controller
         $house->road_number = $request->road_number;
         $house->flat_qty = $request->flat_qty;
         $house->description = $request->description;
+        $house->long = $request->long;
+        $house->lat = $request->lat;
         $house->save();
 
         return back()->withSuccess('Successfully Modified');

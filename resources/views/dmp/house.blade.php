@@ -308,7 +308,17 @@
 
                                                                                 <div class="form-group">
                                                                                     <label for="">Description</label>
-                                                                                    <input type="text" class="form-control" name="description">
+                                                                                    <input type="text" class="form-control" name="description" value="{{$item->name}}">
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <label for="">Latitude</label>
+                                                                                    <input type="text" class="form-control" name="lat" value="{{$item->lat}}">
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <label for="">Longitude</label>
+                                                                                    <input type="text" class="form-control" name="long" value="{{$item->long}}">
                                                                                 </div>
 
                                                                             </div>
