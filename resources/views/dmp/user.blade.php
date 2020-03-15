@@ -139,7 +139,7 @@
                                                         <div class="modal-dialog modal-lg" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="title" id="CreateModal">Modification of {{$item->title}}</h4>
+                                                                    <h4 class="title" id="CreateModal">Modification of {{$item->name}}</h4>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <form method="POST" action="{{url('dmp/users/'.$item->id)}}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
