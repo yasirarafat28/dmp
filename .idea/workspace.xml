@@ -69,8 +69,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/dmp/house.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2976">
-              <caret line="423" column="54" lean-forward="true" selection-start-line="423" selection-start-column="54" selection-end-line="423" selection-end-column="54" />
+            <state relative-caret-position="305">
+              <caret line="275" column="159" selection-start-line="275" selection-start-column="159" selection-end-line="275" selection-end-column="159" />
               <folding>
                 <element signature="e#1614#1621#1#HTML" expanded="true" />
               </folding>
@@ -442,7 +442,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47617000" />
+    <option name="totallyTimeSpent" value="47747000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -839,8 +839,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/dmp/house.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2976">
-          <caret line="423" column="54" lean-forward="true" selection-start-line="423" selection-start-column="54" selection-end-line="423" selection-end-column="54" />
+        <state relative-caret-position="305">
+          <caret line="275" column="159" selection-start-line="275" selection-start-column="159" selection-end-line="275" selection-end-column="159" />
           <folding>
             <element signature="e#1614#1621#1#HTML" expanded="true" />
           </folding>

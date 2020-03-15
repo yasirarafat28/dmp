@@ -268,12 +268,12 @@
 
                                                                                 <div class="form-group">
                                                                                     <label for="">House_Name</label>
-                                                                                    <input type="text" class="form-control" name="House_Name">
+                                                                                    <input type="text" class="form-control" name="House_Name" value="{{$item->name}}">
                                                                                 </div>
 
                                                                                 <div class="form-group">
                                                                                     <label for="">House_Number</label>
-                                                                                    <input type="text" class="form-control" name="house_number">
+                                                                                    <input type="text" class="form-control" name="house_number" value="{{$item->house_number}}">
                                                                                 </div>
 
                                                                                 <div class="form-group">
