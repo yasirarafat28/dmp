@@ -600,15 +600,16 @@
 
                 @foreach($records as $key=>$item)
 
-                    var myLatlng = {lat: 23.7871934, lng: 90.3669393};
+                    var mylong = parseFloat('{{$item->long}}');
+                    var mylat = parseFloat('{{$item->lat}}');
+
+                    var myLatlng = {lat: mylat, lng: mylong };
                     var mapDiv = document.getElementById('map-canvas-{{$item->id}}');
                     var map = new google.maps.Map(mapDiv, {
                         center: myLatlng,
                         zoom: 20,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     });
-                    var mylong = 90.3669393;
-                    var mylat = 23.7871934;
                     var branchName = '{{$item->name??""}}';
 
                     var dictionary = { lat: mylat, lng: mylong, name: branchName };
