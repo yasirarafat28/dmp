@@ -137,17 +137,18 @@
     @yield('content')
 </div>
 
+    <div class="row mt-5 bg-primary">
 
-    <footer>
-        <div class="footer-inner">
-            <div class="pull-left">
-                &copy; <span class="current-year"></span><span class="text-bold text-uppercase">Dhaka Metropolitan Police</span>. <span>Copyright © 2018 . SE Project Group -2</span>
+
+        <footer class="col-md-12">
+            <div class="footer-inner  p-5 col-md-12">
+                <p class="text-center">
+                    &copy; <span class="current-year"></span><span class="text-bold text-uppercase">Dhaka Metropolitan Police</span>. <span>Copyright © 2018 . SE Project Group -2</span>
+                </p>
             </div>
-            <div class="pull-right">
-                <span class="go-top"><i class="ti-angle-up"></i></span>
-            </div>
-        </div>
-    </footer>
+        </footer>
+
+    </div>
     <script>
         jQuery(document).ready(function() {
             Main.init();

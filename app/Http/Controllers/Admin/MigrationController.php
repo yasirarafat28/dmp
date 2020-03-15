@@ -47,6 +47,7 @@ class MigrationController extends Controller
             'flat_details'=>'required',
         ]);
 
+
         Migration::where('resident_id',$request->resident_id)->update([
             'status'=>'inactive'
         ]);
