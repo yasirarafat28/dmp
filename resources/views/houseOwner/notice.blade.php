@@ -19,7 +19,7 @@
             <section id="page-title">
                 <div class="row">
                     <div class="col-sm-8">
-                        <h1 class="mainTitle">Admin | Noticeboard</h1>
+                        <h1 class="mainTitle">House Owner | Noticeboard</h1>
                                                         </div>
                     <ol class="breadcrumb">
                         <li>
@@ -46,7 +46,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $key=>$item): ?>
+                            @foreach($records as $key=>$item)
 
                                 <tr>
                                     <td>{{++$key}}</td>

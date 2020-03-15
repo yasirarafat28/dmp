@@ -23,7 +23,7 @@
 							</div>
 						</section>
 
-							<div class="container-fluid container-fullw bg-white">
+                        <div class="container-fluid container-fullw bg-white">
 							<div class="row">
 							      <a  data-toggle="modal" data-target="#modal-create" href="#" class=" btn btn-primary" title="Add New House" style="border-radius: 0px"><i class="fa fa-plus" aria-hidden="true"></i> Add New House</a>
 
@@ -550,9 +550,9 @@
 									</tbody>
 								</table>
 
-
-							</div>
-						</div>
-					</div>
-				</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 @endsection

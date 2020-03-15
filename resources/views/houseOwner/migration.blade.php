@@ -10,7 +10,7 @@
 						<section id="page-title">
 							<div class="row">
 								<div class="col-sm-8">
-									<h1 class="mainTitle">Admin | Migrations</h1>
+									<h1 class="mainTitle">House Owner | Migrations</h1>
 																	</div>
 								<ol class="breadcrumb">
 									<li>
@@ -94,7 +94,7 @@
                                                 </div>
 
 
-				                                <div class="form-group col-md-12 text-center">
+				                                <div class="text-center">
                                                     <button class="btn btn-primary">Submit</button>
 				                                </div>
 

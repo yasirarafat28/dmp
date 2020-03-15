@@ -37,6 +37,7 @@
                       <a  data-toggle="modal" data-target="#modal-create" href="#" class=" btn btn-primary" title="Add New House" style="border-radius: 0px"><i class="fa fa-plus" aria-hidden="true"></i> Add New Notice</a>
 
                     <!-- Modal -->
+                    <hr>
                     <div class="modal fade" id="modal-create">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -82,7 +83,7 @@
 
                         <!--modal end-->
 
-                    <table class="table table-bordered table-striped table-hover  dataTable" id="example" >
+                    <table class="table table-bordered table-striped table-hover  dataTable text-center" id="example" >
                         <thead>
                             <tr>
                                 <th class="center">#</th>
@@ -93,7 +94,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($records as $key=>$item): ?>
+                            @foreach($records as $key=>$item)
 
                                 <tr>
                                     <td>{{++$key}}</td>
@@ -166,7 +167,7 @@
                         </tbody>
                     </table>
 
-
+                </div>
                 </div>
             </div>
         </div>

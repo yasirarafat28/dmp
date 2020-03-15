@@ -54,63 +54,9 @@
 				                         <form method="POST" action="{{url('dmp/residents')}}" enctype="multipart/form-data">
                                                 {{csrf_field()}}
                                                 <div class="row justify-content-center">
-                                                  <div class="col-md-6">
+                                                  <div class="col-md-12">
                                                       <div class="card">
-                                                          <div class="card-header text-center">House Information</div>
-
-                                                          <div class="card-body">
-
-                                                              <div class="form-group">
-                                                                  <label for="">House_Name</label>
-                                                                  <input type="text" class="form-control" name="House_Name">
-                                                              </div>
-
-                                                              <div class="form-group">
-                                                                  <label for="">House_Number</label>
-                                                                  <input type="text" class="form-control" name="house_number">
-                                                              </div>
-
-                                                              <div class="form-group">
-                                                                  <label for="">House_Area</label>
-                                                                  <input type="text" class="form-control" name="area">
-                                                              </div>
-
-                                                              <div class="form-group">
-                                                                  <label for="">House_Co_Area</label>
-                                                                  <input type="text" class="form-control" name="co_area">
-                                                              </div>
-
-                                                              <div class="form-group">
-                                                                  <label for="">section_Area</label>
-                                                                  <input type="text" class="form-control" name="section">
-                                                              </div>
-
-                                                              <div class="form-group">
-                                                                  <label for="">Gate_Number</label>
-                                                                  <input type="text" class="form-control" name="gate_number">
-                                                              </div>
-
-                                                              <div class="form-group">
-                                                                  <label for="">Road_Number</label>
-                                                                  <input type="text" class="form-control" name="road_number">
-                                                              </div>
-
-                                                              <div class="form-group">
-                                                                  <label for="">Number_for_Floor</label>
-                                                                  <input type="text" class="form-control" name="flat_qty">
-                                                              </div>
-
-                                                              <div class="form-group">
-                                                                  <label for="">Description</label>
-                                                                  <input type="text" class="form-control" name="description">
-                                                              </div>
-
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-md-6">
-                                                      <div class="card">
-                                                          <div class="card-header text-center">Personal Information</div>
+                                                          <div class="card-header text-center">Resident_Personal Information</div>
 
                                                           <div class="card-body">
 
@@ -208,8 +154,10 @@
                                                           </div>
                                                       </div>
                                                   </div>
-                                                  <button type="submit" class="btn btn-primary mt-5 col-md-3">Submit</button>
-                                              </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                                </div>
 
 					                        </form>
 					                      </div>
@@ -426,7 +374,9 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <button type="submit" class="btn btn-outline-primary mt-5 col-md-3">Submit</button>
+                                                                          <div class="text-center">
+                                                                              <button type="submit" class="btn btn-primary">Submit</button>
+                                                                          </div>
                                                                     </div>
                                                                 </form>
 
@@ -441,7 +391,7 @@
 									</tbody>
 								</table>
 
-
+                              </div>
 							</div>
 						</div>
 					</div>

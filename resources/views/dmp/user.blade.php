@@ -37,6 +37,7 @@
 							      <a  data-toggle="modal" data-target="#modal-create" href="#" class=" btn btn-primary" title="Add New House" style="border-radius: 0px"><i class="fa fa-plus" aria-hidden="true"></i> Add New User</a>
 
 					            <!-- Modal -->
+                                <hr>
 					            <div class="modal fade" id="modal-create">
 					              <div class="modal-dialog">
 					                <div class="modal-content">
@@ -197,8 +198,7 @@
                                         @endforeach
 									</tbody>
 								</table>
-
-
+                            </div>
 							</div>
 						</div>
 					</div>

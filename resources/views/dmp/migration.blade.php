@@ -41,6 +41,7 @@
                         <a  data-toggle="modal" data-target="#modal-create" href="#" class=" btn btn-primary" title="Add New House" style="border-radius: 0px"><i class="fa fa-plus" aria-hidden="true"></i> New Migration</a>
 
                     </div>
+                    <hr>
                     <table class="table table-bordered table-striped table-hover  dataTable row" id="example" >
                         <thead>
                             <tr>
@@ -69,7 +70,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="modal fade" id="modal-create">
         <div class="modal-dialog">
@@ -123,6 +123,7 @@
                         </form>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>
