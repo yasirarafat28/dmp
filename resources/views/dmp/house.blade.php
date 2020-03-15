@@ -253,6 +253,9 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h4 class="title" id="CreateModal">Modification of {{$item->name}}</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <form method="POST" action="{{url('dmp/houses/'.$item->id)}}" enctype="multipart/form-data">
@@ -428,6 +431,9 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h4 class="title" id="CreateModal">Preview of {{$item->name}}</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <table class="table table-striped">

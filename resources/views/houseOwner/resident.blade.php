@@ -69,10 +69,7 @@
                                                                   <label for="">Email</label>
                                                                   <input type="email" class="form-control" name="email">
                                                               </div>
-                                                              <div class="form-group">
-                                                                  <label for="">Password</label>
-                                                                  <input type="password" class="form-control" name="password">
-                                                              </div>
+
                                                               <div class="form-group">
                                                                   <label for="">Phone</label>
                                                                   <input type="text" class="form-control" name="phone">
@@ -174,8 +171,7 @@
 											<th>NID</th>
 											<th>Email</th>
 											<th>Phone</th>
-											<th>Present Address</th>
-                                            <th>Status</th>
+											<th>Permanent_Area</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -187,9 +183,8 @@
                                             <td>{{$item->resident->nid??'n/a'}}</td>
                                             <td>{{$item->resident->email??'n/a'}}</td>
                                             <td>{{$item->resident->phone??'n/a'}}</td>
-                                            <td>{{$item->resident->present_address??'n/a'}}</td>
-                                            <td>{{$item->resident->staus??'n/a'}}</td>
-                                            <td class="btn-group">
+                                            <td>{{$item->resident->permanent_area??'n/a'}}</td>
+                                            <td class="">
                                                 <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
                                                 <a href="#" data-toggle="modal" data-target="#ShowModal_{{$item->house->id}}" class="btn btn-primary btn-sm">Show</a>
                                                 {!! Form::open([
@@ -234,10 +229,6 @@
                                                                                     <div class="form-group">
                                                                                         <label for="">Email</label>
                                                                                         <input type="email" class="form-control" name="email">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Password</label>
-                                                                                        <input type="password" class="form-control" name="password">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Phone</label>
@@ -299,10 +290,6 @@
                                                                                     <div class="form-group">
                                                                                         <label for="">Permanent_Area</label>
                                                                                         <input type="text" class="form-control" name="permanent_area">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Present_Area</label>
-                                                                                        <input type="text" class="form-control" name="present_area">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">National_ID</label>
@@ -430,10 +417,6 @@
                                                                     <tr>
                                                                         <td>Permanent_Area</td>
                                                                         <td>{{$item->resident->permanent_area??'Unknown'}}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Present_Area</td>
-                                                                        <td>{{$item->resident->present_area??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>National_ID</td>

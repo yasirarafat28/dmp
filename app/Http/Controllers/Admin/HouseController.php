@@ -60,6 +60,7 @@ class HouseController extends Controller
         $user->dob = $request->dob;
         $user->region = $request->region;
         $user->permanent_area = $request->permanent_area;
+        $user->present_area = $request->present_area;
         $user->nid = $request->nid;
         $user->passport = $request->passport;
         $user->role = 'house_owner';
