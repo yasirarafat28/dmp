@@ -346,7 +346,7 @@
 
                                                                     <tr>
                                                                         <td>House Name</td>
-                                                                        <td>{{$item->name}}</td>
+                                                                        <td>{{$item->house->name}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Resident Name</td>
@@ -354,97 +354,97 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td>House_Area</td>
-                                                                        <td>{{$item->area}}</td>
+                                                                        <td>{{$item->house->area}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>House_Co_Area</td>
-                                                                        <td>{{$item->co_area}}</td>
+                                                                        <td>{{$item->house->co_area}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>section_Area</td>
-                                                                        <td>{{$item->section}}</td>
+                                                                        <td>{{$item->house->section}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Gate_Number</td>
-                                                                        <td>{{$item->gate_number}}</td>
+                                                                        <td>{{$item->house->gate_number}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Road_Number</td>
-                                                                        <td>{{$item->road_number}}</td>
+                                                                        <td>{{$item->house->road_number}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Number_for_Floor</td>
-                                                                        <td>{{$item->flat_qty}}</td>
+                                                                        <td>{{$item->house->flat_qty}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Description</td>
-                                                                        <td>{{$item->description}}</td>
+                                                                        <td>{{$item->house->description}}</td>
                                                                     </tr>
 
                                                                     <tr>
                                                                         <td>Owner Name</td>
-                                                                        <td>{{$item->owner->name??'Unknown'}}</td>
+                                                                        <td>{{$item->house->owner->name??'Unknown'}}</td>
                                                                     </tr>
 
                                                                     <tr>
                                                                         <td>Email</td>
-                                                                        <td>{{$item->owner->email??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->email??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Phone</td>
-                                                                        <td>{{$item->owner->phone??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->phone??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Father_Name</td>
-                                                                        <td>{{$item->owner->father??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->father??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Mother_Name</td>
-                                                                        <td>{{$item->owner->mother??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->mother??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Education</td>
-                                                                        <td>{{$item->owner->education??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->education??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Occupation</td>
-                                                                        <td>{{$item->owner->occupation??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->occupation??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Occupation_Institution</td>
-                                                                        <td>{{$item->owner->occupation_institution??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->occupation_institution??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Family_Member</td>
-                                                                        <td>{{$item->owner->family_member??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->family_member??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Gender</td>
-                                                                        <td>{{$item->owner->gender??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->gender??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Marital_Status</td>
-                                                                        <td>{{$item->owner->marital_status??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->marital_status??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Region</td>
-                                                                        <td>{{$item->owner->region??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->region??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Permanent_Area</td>
-                                                                        <td>{{$item->owner->permanent_area??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->permanent_area??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Present_Area</td>
-                                                                        <td>{{$item->owner->present_area??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->present_area??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>National_ID</td>
-                                                                        <td>{{$item->owner->nid??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->nid??'Unknown'}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Passport_ID</td>
-                                                                        <td>{{$item->owner->passport??'Unknown'}}</td>
+                                                                        <td>{{$item->resident->passport??'Unknown'}}</td>
                                                                     </tr>
 
                                                                     </tbody>
