@@ -221,12 +221,6 @@
                 </footer>
             </div>
         </div>
-        <script>
-            jQuery(document).ready(function() {
-                Main.init();
-                FormElements.init();
-            });
-        </script>
 
         <!--datatable Start-->
 
