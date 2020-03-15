@@ -60,10 +60,6 @@
 
                                                           <div class="card-body">
 
-                                                              <div class="form-group">
-                                                                  <label for="">Owner Name</label>
-                                                                  <input type="text" class="form-control" name="name">
-                                                              </div>
 
                                                               <div class="form-group">
                                                                   <label for="">Resident Name</label>
@@ -215,6 +211,9 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h4 class="title" id="CreateModal">Modification of {{$item->title}}</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <form method="POST" action="{{url('house-owner/residents/'.$item->id)}}" enctype="multipart/form-data">
@@ -227,11 +226,6 @@
                                                                                 <div class="card-header text-center">Resident_Personal Information</div>
 
                                                                                 <div class="card-body">
-
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Owner Name</label>
-                                                                                        <input type="text" class="form-control" name="name">
-                                                                                    </div>
 
                                                                                     <div class="form-group">
                                                                                         <label for="">Resident Name</label>
@@ -339,6 +333,9 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h4 class="title" id="CreateModal">Preview of {{$item->resident->name}}</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <table class="table table-striped">

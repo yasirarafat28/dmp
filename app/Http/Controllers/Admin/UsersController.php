@@ -53,6 +53,7 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->gender = 'male';
         $user->password = bcrypt($request->password);
         $user->role = 'dmp';
         $user->save();
