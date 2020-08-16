@@ -70,10 +70,6 @@
                                                                   <input type="email" class="form-control" name="email">
                                                               </div>
                                                               <div class="form-group">
-                                                                  <label for="">Password</label>
-                                                                  <input type="password" class="form-control" name="password">
-                                                              </div>
-                                                              <div class="form-group">
                                                                   <label for="">Phone</label>
                                                                   <input type="text" class="form-control" name="phone">
                                                               </div>
@@ -168,13 +164,13 @@
 								<table class="table table-bordered table-striped table-hover  dataTable" id="example" >
 									<thead>
 										<tr>
-											<th class="center">#</th>
+											<th class="">#</th>
 											<th>Name</th>
 											<th>NID</th>
 											<th>Email</th>
 											<th>Phone</th>
-											<th>Present Address</th>
-                                            <th>Status</th>
+											<th>Permanent_Area</th>
+											<th>Present_Area</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -186,8 +182,8 @@
                                             <td>{{$item->nid}}</td>
                                             <td>{{$item->email}}</td>
                                             <td>{{$item->phone}}</td>
-                                            <td>{{$item->present_address}}</td>
-                                            <td>{{$item->staus}}</td>
+                                            <td>{{$item->permanent_area}}</td>
+                                            <td>{{$item->present_area}}</td>
                                             <td class="btn-group">
                                                 <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
                                                 {!! Form::open([
@@ -228,55 +224,51 @@
 
                                                                                     <div class="form-group">
                                                                                         <label for="">Resident Name</label>
-                                                                                        <input type="text" class="form-control" name="name">
+                                                                                        <input type="text" class="form-control" name="name" value="{{$item->name}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Email</label>
-                                                                                        <input type="email" class="form-control" name="email">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="">Password</label>
-                                                                                        <input type="password" class="form-control" name="password">
+                                                                                        <input type="email" class="form-control" name="email" value="{{$item->email}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Phone</label>
-                                                                                        <input type="text" class="form-control" name="phone">
+                                                                                        <input type="text" class="form-control" name="phone" value="{{$item->phone}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Father_Name</label>
-                                                                                        <input type="text" class="form-control" name="father">
+                                                                                        <input type="text" class="form-control" name="father" value="{{$item->father}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Mother_Name</label>
-                                                                                        <input type="text" class="form-control" name="mother">
+                                                                                        <input type="text" class="form-control" name="mother" value="{{$item->mother}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Education</label>
-                                                                                        <input type="text" class="form-control" name="education">
+                                                                                        <input type="text" class="form-control" name="education" value="{{$item->education}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Occupation</label>
-                                                                                        <input type="text" class="form-control" name="occupation">
+                                                                                        <input type="text" class="form-control" name="occupation" value="{{$item->occupation}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Occupation_Type</label>
-                                                                                        <input type="text" class="form-control" name="occupation_type">
+                                                                                        <input type="text" class="form-control" name="occupation_type" value="{{$item->occupation_type}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Occupation_Institution</label>
-                                                                                        <input type="text" class="form-control" name="occupation_institution">
+                                                                                        <input type="text" class="form-control" name="occupation_institution" value="{{$item->occupation_institution}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Family_Member</label>
-                                                                                        <input type="text" class="form-control" name="family_member">
+                                                                                        <input type="text" class="form-control" name="family_member" value="{{$item->family_member}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Date_of_Birth</label>
-                                                                                        <input type="date" class="form-control" name="dob">
+                                                                                        <input type="date" class="form-control" name="dob" value="{{$item->dob}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Gender</label>
-                                                                                        <select name="gender" id="" class="form-control">
+                                                                                        <select name="gender" id="" class="form-control" value="{{$item->gender}}">
                                                                                             <option value="male">Male</option>
                                                                                             <option value="female">Female</option>
                                                                                             <option value="others">Others</option>
@@ -284,7 +276,7 @@
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Marital_Status</label>
-                                                                                        <select class="form-control" name="marital_status" id="">
+                                                                                        <select class="form-control" name="marital_status" id="" value="{{$item->marital_status}}">
                                                                                             <option>Select an option</option>
                                                                                             <option value="married">Married</option>
                                                                                             <option value="unmarried">Unmarried</option>
@@ -293,23 +285,23 @@
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Region</label>
-                                                                                        <input type="text" class="form-control" name="region">
+                                                                                        <input type="text" class="form-control" name="region" value="{{$item->region}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Permanent_Area</label>
-                                                                                        <input type="text" class="form-control" name="permanent_area">
+                                                                                        <input type="text" class="form-control" name="permanent_area" value="{{$item->permanent_area}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Present_Area</label>
-                                                                                        <input type="text" class="form-control" name="present_area">
+                                                                                        <input type="text" class="form-control" name="present_area" value="{{$item->present_area}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">National_ID</label>
-                                                                                        <input type="text" class="form-control" name="nid">
+                                                                                        <input type="text" class="form-control" name="nid" value="{{$item->nid}}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="">Passport_ID</label>
-                                                                                        <input type="text" class="form-control" name="passport">
+                                                                                        <input type="text" class="form-control" name="passport" value="{{$item->passport}}">
                                                                                     </div>
 
                                                                                 </div>

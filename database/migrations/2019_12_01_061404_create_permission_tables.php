@@ -79,6 +79,18 @@ class CreatePermissionTables extends Migration
             $table->primary(['permission_id', 'role_id'], 'role_has_permissions_permission_id_role_id_primary');
         });
 
+
+
+        $admin =  \Illuminate\Support\Facades\DB::table('roles')->insertGetId([
+            'name' => 'dmp',
+            'guard_name' => 'web',
+        ]);
+
+        $user = \Illuminate\Support\Facades\DB::table('roles')->insertGetId([
+            'name' => 'house_owner',
+            'guard_name' => 'web',
+        ]);
+
         app('cache')
             ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));

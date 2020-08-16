@@ -1,5 +1,4 @@
 
-
 @extends('layouts.app_dmp')
 
 @section('content')
@@ -25,7 +24,7 @@
 							<div class="container-fluid container-fullw bg-white">
 							<div class="row">
 
-				<table style="width: 100%;">
+				<table style="width: 100%; margin-left: 50px;">
 					<tr>
 						<th><h3> <u><b>Development</b></u></h3></th>
 						<th> <h3> <u><b>Technical Section</b></u></h3></th>

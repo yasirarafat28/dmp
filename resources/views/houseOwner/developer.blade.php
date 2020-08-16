@@ -7,7 +7,7 @@
 							<div class="row">
 								<div class="col-sm-8">
 									<h1 class="mainTitle">House Owner | Developers</h1>
-																	</div>
+                                </div>
 								<ol class="breadcrumb">
 									<li>
 										<span>Admin</span>

@@ -83,7 +83,7 @@
 
                         <!--modal end-->
 
-                    <table class="table table-bordered table-striped table-hover  dataTable text-center" id="example" >
+                    <table class="table table-bordered table-striped table-hover  dataTable " id="example" >
                         <thead>
                             <tr>
                                 <th class="center">#</th>
@@ -149,7 +149,7 @@
 
 
                                                                 <div class="form-group">
-                                                                    <div class="col-md-offset-4 col-md-8">
+                                                                    <div class="col-md-offset-4 col-md-1">
                                                                         <button class="btn btn-primary btnusercreate btnper" type="submit" name="submit" >Submit</button>
                                                                     </div>
                                                                 </div>

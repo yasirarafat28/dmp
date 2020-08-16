@@ -49,7 +49,6 @@ class ResidentController extends Controller
         $user = new  User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
         $user->father = $request->father;
         $user->mother = $request->mother;
@@ -63,6 +62,7 @@ class ResidentController extends Controller
         $user->dob = $request->dob;
         $user->region = $request->region;
         $user->permanent_area = $request->permanent_area;
+        $user->present_area = $request->present_area;
         $user->nid = $request->nid;
         $user->passport = $request->passport;
         $user->role = 'resident';
@@ -110,6 +110,37 @@ class ResidentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->father = $request->father;
+        $user->mother = $request->mother;
+        $user->education = $request->education;
+        $user->occupation = $request->occupation;
+        $user->occupation_type = $request->occupation_type;
+        $user->occupation_institution = $request->occupation_institution;
+        $user->family_member = $request->family_member;
+        $user->gender = $request->gender;
+        $user->marital_status = $request->marital_status;
+        $user->dob = $request->dob;
+        $user->region = $request->region;
+        $user->permanent_area = $request->permanent_area;
+        $user->present_area = $request->present_area;
+        $user->nid = $request->nid;
+        $user->passport = $request->passport;
+        $user->role = 'resident';
+        $user->save();
+
+        $user->assignRole('resident');
+        $house = House::where('owner_id',Auth::id())->first();
+
+        $migration = new Migration();
+        $migration->house_id = $house->id;
+        $migration->resident_id = $user->id;
+        $migration->status = 'active';
+        $migration->save();
+
         return back()->withSuccess('Successfully Modified');
     }
 

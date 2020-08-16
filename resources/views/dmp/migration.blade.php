@@ -35,179 +35,181 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
-                <div class="container">
+                <div class="container" >
                     <div class="row">
 
                         <a  data-toggle="modal" data-target="#modal-create" href="#" class=" btn btn-primary" title="Add New House" style="border-radius: 0px"><i class="fa fa-plus" aria-hidden="true"></i> New Migration</a>
 
                     </div>
                     <hr>
-                    <table class="table table-bordered table-striped table-hover  dataTable row" id="example" >
-                        <thead>
-                            <tr>
-                                <th class="center">#</th>
-                                <th>House</th>
-                                <th>Resident Name</th>
-                                <th>Flat Details</th>
-                                <th>Comments</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($records as $row)
-                            <tr>
-                                <td>{{$row->id}}</td>
-                                <td>{{$row->house->name??'Unknown'}}</td>
-                                <td>{{$row->resident->name??'Unknown'}}</td>
-                                <td>{{$row->flat_qty}}</td>
-                                <td>{{$row->description}}</td>
-                                <td>{{$row->status}}</td>
-                                <td class="btn-group">
-                                    <a href="#" data-toggle="modal" data-target="#ShowModal_{{$row->house->id??0}}" class="btn btn-primary btn-sm">Show</a>
-                                    {!! Form::open([
-                                                   'method'=>'DELETE',
-                                                   'url' => ['/house-owner/residents', $row->id],
-                                                   'style' => 'display:inline'
-                                                ]) !!}
-                                    {!! Form::button('Delete', array(
-                                         'type' => 'submit',
-                                         'onclick' => 'return confirm("Are you sure? ");',
-                                         'class' => 'btn btn-danger btn-sm',
-                                            'data-type'=>'confirm',
-                                         )) !!}
-                                    {!! Form::close() !!}
+                    <div id="example_wrapper" class="dataTables_wrapper no-footer" style="margin-left: -15px;">
+                        <table class="table table-bordered table-striped table-hover  dataTable row" id="example" >
+                            <thead>
+                                <tr>
+                                    <th class="center">#</th>
+                                    <th>House</th>
+                                    <th>Resident Name</th>
+                                    <th>Flat Details</th>
+                                    <th>Comments</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($records as $row)
+                                <tr>
+                                    <td>{{$row->id}}</td>
+                                    <td>{{$row->house->name??'Unknown'}}</td>
+                                    <td>{{$row->resident->name??'Unknown'}}</td>
+                                    <td>{{$row->flat_qty}}</td>
+                                    <td>{{$row->description}}</td>
+                                    <td>{{$row->status}}</td>
+                                    <td class="btn-group">
+                                        <a href="#" data-toggle="modal" data-target="#ShowModal_{{$row->house->id??0}}" class="btn btn-primary btn-sm">Show</a>
+                                        {!! Form::open([
+                                                       'method'=>'DELETE',
+                                                       'url' => ['/house-owner/residents', $row->id],
+                                                       'style' => 'display:inline'
+                                                    ]) !!}
+                                        {!! Form::button('Delete', array(
+                                             'type' => 'submit',
+                                             'onclick' => 'return confirm("Are you sure? ");',
+                                             'class' => 'btn btn-danger btn-sm',
+                                                'data-type'=>'confirm',
+                                             )) !!}
+                                        {!! Form::close() !!}
 
 
 
-                                    <div class="modal fade" id="ShowModal_{{$row->house->id??0}}" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="title" id="CreateModal">Preview of {{$row->resident->name}}</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <table class="table table-striped">
-                                                        <tbody>
+                                        <div class="modal fade" id="ShowModal_{{$row->house->id??0}}" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="title" id="CreateModal">Preview of {{$row->resident->name}}</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <table class="table table-striped">
+                                                            <tbody>
 
-                                                        <tr>
-                                                            <td>House Name</td>
-                                                            <td>{{$row->house->name}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Resident Name</td>
-                                                            <td>{{$row->resident->name??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>House_Area</td>
-                                                            <td>{{$row->house->area}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>House_Co_Area</td>
-                                                            <td>{{$row->house->co_area}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>section_Area</td>
-                                                            <td>{{$row->house->section}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Gate_Number</td>
-                                                            <td>{{$row->house->gate_number}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Road_Number</td>
-                                                            <td>{{$row->house->road_number}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Number_for_Floor</td>
-                                                            <td>{{$row->house->flat_qty}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Description</td>
-                                                            <td>{{$row->house->description}}</td>
-                                                        </tr>
+                                                            <tr>
+                                                                <td>House Name</td>
+                                                                <td>{{$row->house->name}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Resident Name</td>
+                                                                <td>{{$row->resident->name??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>House_Area</td>
+                                                                <td>{{$row->house->area}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>House_Co_Area</td>
+                                                                <td>{{$row->house->co_area}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>section_Area</td>
+                                                                <td>{{$row->house->section}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Gate_Number</td>
+                                                                <td>{{$row->house->gate_number}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Road_Number</td>
+                                                                <td>{{$row->house->road_number}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Number_for_Floor</td>
+                                                                <td>{{$row->house->flat_qty}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Description</td>
+                                                                <td>{{$row->house->description}}</td>
+                                                            </tr>
 
-                                                        <tr>
-                                                            <td>Owner Name</td>
-                                                            <td>{{$row->house->owner->name??'Unknown'}}</td>
-                                                        </tr>
+                                                            <tr>
+                                                                <td>Owner Name</td>
+                                                                <td>{{$row->house->owner->name??'Unknown'}}</td>
+                                                            </tr>
 
-                                                        <tr>
-                                                            <td>Email</td>
-                                                            <td>{{$row->resident->email??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Phone</td>
-                                                            <td>{{$row->resident->phone??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Father_Name</td>
-                                                            <td>{{$row->resident->father??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Mother_Name</td>
-                                                            <td>{{$row->resident->mother??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Education</td>
-                                                            <td>{{$row->resident->education??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Occupation</td>
-                                                            <td>{{$row->resident->occupation??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Occupation_Institution</td>
-                                                            <td>{{$row->resident->occupation_institution??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Family_Member</td>
-                                                            <td>{{$row->resident->family_member??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Gender</td>
-                                                            <td>{{$row->resident->gender??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Marital_Status</td>
-                                                            <td>{{$row->resident->marital_status??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Region</td>
-                                                            <td>{{$row->resident->region??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Permanent_Area</td>
-                                                            <td>{{$row->resident->permanent_area??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Present_Area</td>
-                                                            <td>{{$row->resident->present_area??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>National_ID</td>
-                                                            <td>{{$row->resident->nid??'Unknown'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Passport_ID</td>
-                                                            <td>{{$row->resident->passport??'Unknown'}}</td>
-                                                        </tr>
+                                                            <tr>
+                                                                <td>Email</td>
+                                                                <td>{{$row->resident->email??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Phone</td>
+                                                                <td>{{$row->resident->phone??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Father_Name</td>
+                                                                <td>{{$row->resident->father??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Mother_Name</td>
+                                                                <td>{{$row->resident->mother??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Education</td>
+                                                                <td>{{$row->resident->education??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Occupation</td>
+                                                                <td>{{$row->resident->occupation??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Occupation_Institution</td>
+                                                                <td>{{$row->resident->occupation_institution??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Family_Member</td>
+                                                                <td>{{$row->resident->family_member??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Gender</td>
+                                                                <td>{{$row->resident->gender??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Marital_Status</td>
+                                                                <td>{{$row->resident->marital_status??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Region</td>
+                                                                <td>{{$row->resident->region??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Permanent_Area</td>
+                                                                <td>{{$row->resident->permanent_area??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Present_Area</td>
+                                                                <td>{{$row->resident->present_area??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>National_ID</td>
+                                                                <td>{{$row->resident->nid??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Passport_ID</td>
+                                                                <td>{{$row->resident->passport??'Unknown'}}</td>
+                                                            </tr>
 
-                                                        </tbody>
-                                                    </table>
+                                                            </tbody>
+                                                        </table>
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

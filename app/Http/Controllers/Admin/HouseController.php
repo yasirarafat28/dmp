@@ -117,10 +117,10 @@ class HouseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = new User();
+        $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
         $user->father = $request->father;
         $user->mother = $request->mother;
@@ -134,6 +134,7 @@ class HouseController extends Controller
         $user->dob = $request->dob;
         $user->region = $request->region;
         $user->permanent_area = $request->permanent_area;
+        $user->present_area = $request->present_area;
         $user->nid = $request->nid;
         $user->passport = $request->passport;
         $user->role = 'house_owner';

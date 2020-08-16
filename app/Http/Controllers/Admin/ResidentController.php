@@ -50,7 +50,6 @@ class ResidentController extends Controller
         $user = new  User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
         $user->father = $request->father;
         $user->mother = $request->mother;
@@ -64,6 +63,7 @@ class ResidentController extends Controller
         $user->dob = $request->dob;
         $user->region = $request->region;
         $user->permanent_area = $request->permanent_area;
+        $user->present_area = $request->present_area;
         $user->nid = $request->nid;
         $user->passport = $request->passport;
         $user->role = 'resident';
@@ -125,7 +125,6 @@ class ResidentController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
         $user->phone = $request->phone;
         $user->father = $request->father;
         $user->mother = $request->mother;
@@ -139,6 +138,7 @@ class ResidentController extends Controller
         $user->dob = $request->dob;
         $user->region = $request->region;
         $user->permanent_area = $request->permanent_area;
+        $user->present_area = $request->present_area;
         $user->nid = $request->nid;
         $user->passport = $request->passport;
         $user->role = 'resident';

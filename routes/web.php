@@ -26,7 +26,7 @@ Route::get('/about', function () {
 });
 Route::get('/house', function () {
     $records = \App\House::with('owner')->get();
-    return view('front/house',compact('records'));
+    return view('front/house', compact('records'));
 });
 
 Auth::routes();
@@ -34,7 +34,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::group(['middleware' => ['auth','role:dmp'], 'prefix' => 'dmp'], function () {
+Route::group(['middleware' => ['auth', 'role:dmp'], 'prefix' => 'dmp'], function () {
     Route::get('dashboard', 'DashboardController@DmpDashboard')->name('DmpDashboard');
     Route::resource('notice', 'NoticeController');
     Route::resource('users', 'Admin\UsersController');
@@ -42,17 +42,15 @@ Route::group(['middleware' => ['auth','role:dmp'], 'prefix' => 'dmp'], function 
     Route::resource('residents', 'Admin\ResidentController');
     Route::resource('migrations', 'Admin\MigrationController');
     Route::get('developers', 'HomeController@auth_developer');
-
 });
 
 
-Route::group(['middleware' => ['auth','role:house_owner'], 'prefix' => 'house-owner'], function () {
+Route::group(['middleware' => ['auth', 'role:house_owner'], 'prefix' => 'house-owner'], function () {
     Route::get('dashboard', 'DashboardController@HouseOwnerDashboard')->name('HouseOwnerDashboard');
-
     Route::resource('residents', 'HouseOwner\ResidentController');
     Route::get('notice', 'NoticeController@indexHouse');
     Route::resource('residents', 'HouseOwner\ResidentController');
     Route::resource('migrations', 'HouseOwner\MigrationController');
-    Route::get('developers', 'HomeController@auth_developer');
+    // Route::get('developers', 'HomeController@auth_developer');
 
 });
