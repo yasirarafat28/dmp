@@ -171,6 +171,7 @@
 											<th>Phone</th>
 											<th>Permanent_Area</th>
 											<th>Present_Area</th>
+											<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -184,6 +185,7 @@
                                             <td>{{$item->phone}}</td>
                                             <td>{{$item->permanent_area}}</td>
                                             <td>{{$item->present_area}}</td>
+                                            <td>{{ucfirst($item->status)}}</td>
                                             <td class="btn-group">
                                                 <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
                                                 {!! Form::open([
@@ -302,6 +304,15 @@
                                                                                     <div class="form-group">
                                                                                         <label for="">Passport_ID</label>
                                                                                         <input type="text" class="form-control" name="passport" value="{{$item->passport}}">
+                                                                                    </div>
+
+
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Status</label>
+                                                                                        <select name="status" id="" class="form-control"  >
+                                                                                            <option value="pending" {{ $item->status=='pending'?'selected':'' }}>Pending</option>
+                                                                                            <option value="active" {{ $item->status=='active'?'selected':'' }}>Active</option>
+                                                                                        </select>
                                                                                     </div>
 
                                                                                 </div>

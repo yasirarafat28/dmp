@@ -15,9 +15,9 @@ class ResidentController extends Controller
 
     public function index()
     {
-        $house = House::where('owner_id',Auth::id())->first();
-       $records = Migration::with('house','resident')->where('house_id',$house->id)->orderBy('created_at','DESC')->get();
-        return view('houseOwner.resident',compact('records'));
+        $house = House::where('owner_id', Auth::id())->first();
+        $records = Migration::with('house', 'resident')->where('house_id', $house->id)->orderBy('created_at', 'DESC')->get();
+        return view('houseOwner.resident', compact('records'));
     }
 
     /**
@@ -68,14 +68,6 @@ class ResidentController extends Controller
         $user->role = 'resident';
         $user->save();
 
-        $user->assignRole('resident');
-        $house = House::where('owner_id',Auth::id())->first();
-
-        $migration = new Migration();
-        $migration->house_id = $house->id;
-        $migration->resident_id = $user->id;
-        $migration->status = 'active';
-        $migration->save();
         return back()->withSuccess('Successfully Inserted');
     }
 
@@ -115,7 +107,7 @@ class ResidentController extends Controller
         $request->validate([
 
             'name' => 'required',
-            'email' => 'required|string| email|max:255|unique:users,email,'.$id,
+            'email' => 'required|string| email|max:255|unique:users,email,' . $id,
             'phone' => 'required',
         ]);
         $user = User::find($id);
@@ -138,16 +130,9 @@ class ResidentController extends Controller
         $user->nid = $request->nid;
         $user->passport = $request->passport;
         $user->role = 'resident';
+        $user->status = 'pending';
         $user->save();
 
-        //$user->assignRole('resident');
-        $house = House::where('owner_id',Auth::id())->first();
-
-        $migration = new Migration();
-        $migration->house_id = $house->id;
-        $migration->resident_id = $user->id;
-        $migration->status = 'active';
-        $migration->save();
 
         return back()->withSuccess('Successfully Modified');
     }

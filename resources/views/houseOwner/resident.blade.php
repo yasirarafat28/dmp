@@ -187,7 +187,7 @@
                                             <td class="">
                                                 <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
                                                 <a href="#" data-toggle="modal" data-target="#ShowModal_{{$item->house->id}}" class="btn btn-primary btn-sm">Show</a>
-                                                {!! Form::open([
+                                                <!--{!! Form::open([
                                                                'method'=>'DELETE',
                                                                'url' => ['/house-owner/residents', $item->id],
                                                                'style' => 'display:inline'
@@ -198,7 +198,7 @@
                                                      'class' => 'btn btn-danger btn-sm',
                                                         'data-type'=>'confirm',
                                                      )) !!}
-                                                {!! Form::close() !!}
+                                                {!! Form::close() !!} -->
 
 
                                                 <div class="modal fade" id="EditModal_{{$item->id}}" tabindex="-1" role="dialog">
@@ -211,7 +211,7 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form method="POST" action="{{url('house-owner/residents/'.$item->id)}}" enctype="multipart/form-data">
+                                                                <form method="POST" action="{{url('house-owner/residents/'.$item->resident->id)}}" enctype="multipart/form-data">
                                                                   {{csrf_field()}}
                                                                   {{method_field('PATCH')}}
 
