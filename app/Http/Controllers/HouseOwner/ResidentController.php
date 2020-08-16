@@ -110,6 +110,14 @@ class ResidentController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
+        $request->validate([
+
+            'name' => 'required',
+            'email' => 'required|string| email|max:255|unique:users,email,'.$id,
+            'phone' => 'required',
+        ]);
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
@@ -132,7 +140,7 @@ class ResidentController extends Controller
         $user->role = 'resident';
         $user->save();
 
-        $user->assignRole('resident');
+        //$user->assignRole('resident');
         $house = House::where('owner_id',Auth::id())->first();
 
         $migration = new Migration();
