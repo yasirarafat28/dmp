@@ -19,8 +19,8 @@ class HouseController extends Controller
     {
         //
 
-        $records = House::with('owner')->orderBy('created_at','DESC')->get();
-        return view('dmp.house',compact('records'));
+        $records = House::with('owner')->orderBy('created_at', 'DESC')->get();
+        return view('dmp.house', compact('records'));
     }
 
     /**
@@ -82,8 +82,6 @@ class HouseController extends Controller
         $house->save();
 
         return back()->withSuccess('Successfully Inserted');
-
-
     }
 
     /**
@@ -117,7 +115,11 @@ class HouseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
+
+
+
+        $house = House::find($id);
+        $user = User::find($house->owner_id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
@@ -140,9 +142,7 @@ class HouseController extends Controller
         $user->role = 'house_owner';
         $user->save();
 
-        $user->assignRole('house_owner');
-
-        $house = new House();
+        //$house = new House();
         $house->owner_id = $user->id;
         $house->name = $request->House_Name;
         $house->house_number = $request->house_number;
@@ -158,7 +158,6 @@ class HouseController extends Controller
         $house->save();
 
         return back()->withSuccess('Successfully Modified');
-
     }
 
     /**
@@ -169,7 +168,7 @@ class HouseController extends Controller
      */
     public function destroy($id)
     {
-         $user = House::destroy($id);
+        $user = House::destroy($id);
         return back()->withSuccess('Successfully Deleted');
     }
 }
