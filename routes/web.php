@@ -42,6 +42,8 @@ Route::group(['middleware' => ['auth', 'role:dmp'], 'prefix' => 'dmp'], function
     Route::resource('houses', 'Admin\HouseController');
     Route::resource('residents', 'Admin\ResidentController');
     Route::resource('migrations', 'Admin\MigrationController');
+    Route::resource('area', 'AreaController');
+    Route::resource('sections', 'AreaSectionController');
     Route::get('developers', 'HomeController@auth_developer');
 });
 

@@ -101,6 +101,30 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="dmp/area">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="ti-home"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> <a href="/dmp/area">Area Setting</a> </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="dmp/sections">
+                                    <div class="item-content">
+                                        <div class="item-media">
+                                            <i class="ti-home"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <span class="title"> <a href="/dmp/sections">Section Setting</a> </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="dashboard">
                                     <div class="item-content">
                                         <div class="item-media">
