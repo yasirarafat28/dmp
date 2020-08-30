@@ -52,7 +52,7 @@
 					                  </div>
 					                  <div class="modal-body">
 
-					                        <form method="POST" action="{{url('houseOwner/migrations')}}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+					                        <form method="POST" action="{{url('house-owner/migrations')}}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                                                 {{csrf_field()}}
 
                                                 <div class="form-group ">

@@ -68,6 +68,15 @@ class ResidentController extends Controller
         $user->role = 'resident';
         $user->save();
 
+        $user->assignRole('resident');
+        $house = House::where('owner_id', Auth::id())->first();
+
+        $migration = new Migration();
+        $migration->house_id = $house->id;
+        $migration->resident_id = $user->id;
+        $migration->status = 'active';
+        $migration->save();
+
         return back()->withSuccess('Successfully Inserted');
     }
 

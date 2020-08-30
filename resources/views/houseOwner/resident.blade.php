@@ -131,10 +131,10 @@
                                                                   <label for="">Permanent_Area</label>
                                                                   <input type="text" class="form-control" name="permanent_area">
                                                               </div>
-                                                              <div class="form-group">
+                                                              <!--<div class="form-group">
                                                                   <label for="">Present_Area</label>
                                                                   <input type="text" class="form-control" name="present_area">
-                                                              </div>
+                                                              </div>-->
                                                               <div class="form-group">
                                                                   <label for="">National_ID</label>
                                                                   <input type="text" class="form-control" name="nid">
@@ -291,10 +291,10 @@
                                                                                         <label for="">Permanent_Area</label>
                                                                                         <input type="text" class="form-control" name="permanent_area" value="{{$item->resident->permanent_area??'n/a'}}">
                                                                                     </div>
-                                                                                    <div class="form-group">
+                                                                                    <!--<div class="form-group">
                                                                                         <label for="">Present_Area</label>
-                                                                                        <input type="text" class="form-control" name="permanent_esent_areaarea" value="{{$item->resident->present_area??'n/a'}}">
-                                                                                    </div>
+                                                                                        <input type="text" class="form-control" name="present_area" value="{{$item->resident->present_area??'n/a'}}">
+                                                                                    </div>-->
                                                                                     <div class="form-group">
                                                                                         <label for="">National_ID</label>
                                                                                         <input type="text" class="form-control" name="nid" value="{{$item->resident->nid??'n/a'}}">
@@ -422,6 +422,10 @@
                                                                         <td>Permanent_Area</td>
                                                                         <td>{{$item->resident->permanent_area??'Unknown'}}</td>
                                                                     </tr>
+                                                                    <!--<tr>
+                                                                        <td>Present_Area</td>
+                                                                        <td>{{$item->resident->present_area??'Unknown'}}</td>
+                                                                    </tr>-->
                                                                     <tr>
                                                                         <td>National_ID</td>
                                                                         <td>{{$item->resident->nid??'Unknown'}}</td>
