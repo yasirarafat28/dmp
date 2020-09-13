@@ -16,12 +16,16 @@ class MigrationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $houses = House::all();
         $areas = Area::where('status', 'active')->orderBy('created_at', 'DESC')->get();
         $residents = User::where('role', 'resident')->get();
-        $records = Migration::with('house', 'resident')->orderBy('created_at', 'DESC')->get();
+        $records = Migration::with('house', 'resident')->where(function ($q) use ($request) {
+            if (isset($request->house_id) && $request->house_id) {
+                $q->where('house_id', $request->house_id);
+            }
+        })->orderBy('created_at', 'DESC')->get();
         return view('dmp.migration', compact('houses', 'residents', 'records', 'areas'));
     }
 

@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth', 'role:house_owner'], 'prefix' => 'house-o
     Route::resource('residents', 'HouseOwner\ResidentController');
     Route::get('notice', 'NoticeController@indexHouse');
     Route::resource('residents', 'HouseOwner\ResidentController');
+    Route::resource('family', 'HouseOwner\FamilyController');
     Route::resource('migrations', 'HouseOwner\MigrationController');
     // Route::get('developers', 'HomeController@auth_developer');
 

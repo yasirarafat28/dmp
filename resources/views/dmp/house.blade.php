@@ -96,6 +96,7 @@
                                         <td>{{$item->owner->nid??''}}</td>
                                         <td class="btn-group">
                                             <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="/dmp/migrations?house_id={{ $item->id }}"  class="btn btn-primary btn-sm">Resident</a>
                                             <a href="#" data-toggle="modal" data-target="#ShowModal_{{$item->id}}" class="btn btn-primary btn-sm">Show</a>
                                             <a href="#" data-toggle="modal" data-target="#MapModal_{{$item->id}}" class="btn btn-primary btn-sm"><i class="fa fa-map-marker"> Map</i></a>
                                             {!! Form::open([

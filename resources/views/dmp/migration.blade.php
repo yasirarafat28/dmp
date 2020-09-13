@@ -48,16 +48,19 @@
 
                     </div>
                     <hr>
-                    <div class="col-md-3">
-                            <label for="">House_Area</label>
-                                <select name="area_id" id="area_id"
+                    <form action="">
+
+                        <div class="col-md-3">
+                            <label for="">House</label>
+                                <select name="house_id" id="area_id" onchange="this.form.submit()"
                                         class="form-control">
                                     <option value="">Select an option</option>
-                                    @foreach($areas??array() as $area)
-                                        <option value="{{$area->id}}">{{$area->name}}</option>
+                                    @foreach($houses??array() as $house)
+                                        <option {{ isset($_GET['house_id'] ) && $_GET['house_id']==$house->id ?'selected':''}} value="{{$house->id}}">{{$house->name}}</option>
                                     @endforeach
                                 </select>
                         </div>
+                    </form>
 
 
                         <div class="col-md-2">
