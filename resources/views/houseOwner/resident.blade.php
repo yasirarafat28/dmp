@@ -198,6 +198,8 @@
                                             <td>{{$item->resident->apartmant_number??'n/a'}}</td>
                                             <td class="">
                                                 <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
+                                                <a href="#" data-toggle="modal" data-target="#AddMemberModal_{{$item->id}}" class="btn btn-primary btn-sm">Add Member</a>
+                                                <a href="#" data-toggle="modal" data-target="#MemberModal_{{$item->id}}" class="btn btn-primary btn-sm">Members</a>
                                                 <a href="#" data-toggle="modal" data-target="#ShowModal_{{$item->id}}" class="btn btn-primary btn-sm">Show</a>
                                                 <!--{!! Form::open([
                                                                'method'=>'DELETE',
@@ -338,6 +340,114 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="modal fade" id="AddMemberModal_{{$item->id}}" tabindex="-1" role="dialog">
+                                                    <div class="modal-dialog modal-md" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="title" id="CreateModal">Add Family Member</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form method="POST" action="{{url('house-owner/residents/add/family-member')}}" enctype="multipart/form-data">
+                                                                  {{csrf_field()}}
+                                                                    <input type="hidden" name="user_id" value="{{$item->resident->id??0}}">
+
+                                                                    <div class="row justify-content-center">
+                                                                        <div class="col-md-12">
+                                                                            <div class="card">
+                                                                                <div class="card-header text-center">Resident_Personal Information</div>
+
+                                                                                <div class="card-body">
+
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Resident Name</label>
+                                                                                        <input type="text" class="form-control" name="name">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="">National_ID</label>
+                                                                                        <input type="text" class="form-control" name="nid">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Relation</label>
+                                                                                        <input type="text" class="form-control" name="relation">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Age</label>
+                                                                                        <input type="text" class="form-control" name="age">
+                                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Birth Code</label>
+                                                                                        <input type="text" class="form-control" name="birth_code">
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="text-center">
+                                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal fade" id="MemberModal_{{$item->id}}" tabindex="-1" role="dialog">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="title" id="CreateModal">Family Member</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <table class="table table-striped">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <td>Name</td>
+                                                                        <td>Relation</td>
+                                                                        <td>Age</td>
+                                                                        <td>Nid</td>
+                                                                        <td>Birth Code</td>
+                                                                        <td>Action</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    @forelse($item->resident->members??array() as $member)
+                                                                        <tr>
+                                                                            <td>{{$member->name}}</td>
+                                                                            <td>{{$member->relation}}</td>
+                                                                            <td>{{$member->age}}</td>
+                                                                            <td>{{$member->nid}}</td>
+                                                                            <td>{{$member->birth_code}}</td>
+                                                                            <td>
+
+                                                                                <a href="/house-owner/residents/remove/family-member/{{$member->id}}" class="btn btn-danger btn-sm">Remove</a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    @empty
+                                                                        <tr>
+                                                                            <td colspan="5">No member related with this resident!</td>
+                                                                        </tr>
+                                                                    @endforelse
+
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
 
                                                 <div class="modal fade" id="ShowModal_{{$item->id}}" tabindex="-1" role="dialog">
                                                     <div class="modal-dialog modal-lg" role="document">

@@ -43,5 +43,9 @@ class User extends Authenticatable
     ];
 
 
+    public  function members(){
+        return $this->hasMany('App\family','user_id');
+    }
+
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\HouseOwner;
 
+use App\family;
 use App\House;
 use App\User;
 use Illuminate\Http\Request;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\HouseOwner;
 
+use App\family;
 use App\House;
 use App\Migration;
 use App\User;
@@ -163,5 +164,33 @@ class ResidentController extends Controller
 
         $user = User::destroy($id);
         return back()->withSuccess('Successfully Deleted');
+    }
+
+
+    public function addFamilyMember(Request $request){
+        $this->validate($request,[
+            'name'=>'required',
+            'relation'=>'required',
+        ]);
+
+        $member = new family();
+        $member->user_id = $request->user_id;
+        $member->name = $request->name;
+        $member->relation = $request->relation;
+        $member->age = $request->age;
+        $member->nid = $request->nid;
+        $member->birth_code = $request->birth_code;
+        $member->save();
+
+        return back()->withSuccess('Family member successfully updated!');
+    }
+
+
+    public function removeFamilyMember($id){
+
+        family::destroy($id);
+
+
+        return back()->withSuccess('Family member successfully removed!');
     }
 }
