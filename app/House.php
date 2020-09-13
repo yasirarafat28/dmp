@@ -15,18 +15,18 @@ class House extends Model
     {
         return $this->belongsTo('App\User', 'owner_id');
     }
-    public function area()
+    public function area_details()
     {
-        return $this->belongsTo('App\Area', 'area_id');
+        return $this->belongsTo('App\Area', 'area');
     }
 
-    public function section()
+    public function section_details()
     {
-        return $this->belongsTo('App\AreaSection', 'section_id');
+        return $this->belongsTo('App\AreaSection', 'section');
     }
 
     public function coarea()
     {
-        return $this->belongsTo('App\Coarea', 'coarea_id');
+        return $this->belongsTo('App\Coarea', 'co_area');
     }
 }

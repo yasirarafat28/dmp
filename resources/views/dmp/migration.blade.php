@@ -4,6 +4,12 @@
 
 @section('content')
 
+@php
+
+    $areas = \App\Area::where('status', 'active')->orderBy('created_at', 'DESC')->get();
+
+
+@endphp
 
     <div class="main-content" >
         <div class="wrap-content container" id="container">
@@ -41,6 +47,26 @@
                         <a  data-toggle="modal" data-target="#modal-create" href="#" class=" btn btn-primary" title="Add New House" style="border-radius: 0px"><i class="fa fa-plus" aria-hidden="true"></i> New Migration</a>
 
                     </div>
+                    <hr>
+                    <div class="col-md-3">
+                            <label for="">House_Area</label>
+                                <select name="area_id" id="area_id"
+                                        class="form-control">
+                                    <option value="">Select an option</option>
+                                    @foreach($areas??array() as $area)
+                                        <option value="{{$area->id}}">{{$area->name}}</option>
+                                    @endforeach
+                                </select>
+                        </div>
+
+
+                        <div class="col-md-2">
+                            <br>
+                            <button class="btn btn-primary" style="margin-top: 7px">Search</button>
+                        </div>
+                    </div>
+                    <br>
+
                     <hr>
                     <div id="example_wrapper" class="dataTables_wrapper no-footer" style="margin-left: -15px;">
                         <table class="table table-bordered table-striped table-hover  dataTable row" id="example" >

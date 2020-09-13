@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Area;
 use App\House;
 use App\Migration;
 use App\User;
@@ -18,9 +19,10 @@ class MigrationController extends Controller
     public function index()
     {
         $houses = House::all();
-        $residents = User::where('role','resident')->get();
-        $records = Migration::with('house','resident')->orderBy('created_at','DESC')->get();
-        return view('dmp.migration',compact('houses','residents','records'));
+        $areas = Area::where('status', 'active')->orderBy('created_at', 'DESC')->get();
+        $residents = User::where('role', 'resident')->get();
+        $records = Migration::with('house', 'resident')->orderBy('created_at', 'DESC')->get();
+        return view('dmp.migration', compact('houses', 'residents', 'records', 'areas'));
     }
 
     /**
@@ -41,15 +43,15 @@ class MigrationController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'resident_id'=>'required',
-            'house_id'=>'required',
-            'flat_details'=>'required',
+        $this->validate($request, [
+            'resident_id' => 'required',
+            'house_id' => 'required',
+            'flat_details' => 'required',
         ]);
 
 
-        Migration::where('resident_id',$request->resident_id)->update([
-            'status'=>'inactive'
+        Migration::where('resident_id', $request->resident_id)->update([
+            'status' => 'inactive'
         ]);
 
         $migration = new Migration();

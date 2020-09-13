@@ -24,7 +24,7 @@ class HouseController extends Controller
         $areas = Area::where('status', 'active')->orderBy('created_at', 'DESC')->get();
         $sections = AreaSection::orderBy('created_at', 'DESC')->get();
         $coareas = Coarea::orderBy('created_at', 'DESC')->get();
-        $records = House::with('owner')->where(function ($q) use ($request) {
+        $records = House::with('owner', 'area_details')->where(function ($q) use ($request) {
             if (isset($request->area_id) && $request->area_id) {
                 $q->where('area', $request->area_id);
             }

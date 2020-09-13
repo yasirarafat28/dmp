@@ -88,9 +88,9 @@
                                         <td>{{++$key}}</td>
                                         <td>{{$item->name??''}}</td>
                                         <td>{{$item->owner->name??''}}</td>
-                                        <td>{{$item->area??''}}</td>
-                                        <td>{{$item->section??''}}</td>
-                                        <td>{{$item->co_area??''}}</td>
+                                        <td>{{$item->area_details->name??''}}</td>
+                                        <td>{{$item->section_details->name??''}}</td>
+                                        <td>{{$item->coarea->name??''}}</td>
                                         <td>{{$item->gate_number??''}}</td>
                                         <td>{{$item->road_number??''}}</td>
                                         <td>{{$item->owner->nid??''}}</td>
