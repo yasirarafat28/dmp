@@ -2,6 +2,14 @@
 
 @section('content')
 
+@php
+
+    $areas = \App\Area::where('status', 'active')->orderBy('created_at', 'DESC')->get();
+    $sections = \App\AreaSection::orderBy('created_at', 'DESC')->get();
+    $coareas = \App\Coarea::orderBy('created_at', 'DESC')->get();
+
+@endphp
+
 <div class="container">
 
     @if(session()->has('success'))
@@ -37,7 +45,7 @@
 
                         <div class="form-group">
                             <label for="">House_Area</label>
-                            <select name="area_id" id="" class="form-control">
+                            <select name="area_id" id="area_id" class="form-control">
                                 <option value="">Select an option</option>
                                 @foreach($areas??array() as $section)
                                     <option value="{{$section->id}}">{{$section->name}}</option>
@@ -47,7 +55,7 @@
 
                         <div class="form-group">
                             <label for="">section_Area</label>
-                            <select name="section_id" id="" class="form-control">
+                            <select name="section_id" id="section_id" class="form-control">
                                 <option value="">Select an option</option>
                                 @foreach($sections??array() as $section)
                                     <option value="{{$section->id}}">{{$section->name}}</option>
@@ -57,7 +65,7 @@
 
                         <div class="form-group">
                             <label for="">House_Co_Area</label>
-                            <select name="coarea_id" id="" class="form-control">
+                            <select name="coarea_id" id="coarea_id" class="form-control">
                                 <option value="">Select an option</option>
                                 @foreach($coareas??array() as $section)
                                     <option value="{{$section->id}}">{{$section->name}}</option>
