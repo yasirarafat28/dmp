@@ -17,6 +17,7 @@
 
     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         {{csrf_field()}}
+
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
@@ -36,17 +37,32 @@
 
                         <div class="form-group">
                             <label for="">House_Area</label>
-                            <input type="text" class="form-control" name="area">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">House_Co_Area</label>
-                            <input type="text" class="form-control" name="co_area">
+                            <select name="area_id" id="" class="form-control">
+                                <option value="">Select an option</option>
+                                @foreach($areas??array() as $section)
+                                    <option value="{{$section->id}}">{{$section->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label for="">section_Area</label>
-                            <input type="text" class="form-control" name="section">
+                            <select name="section_id" id="" class="form-control">
+                                <option value="">Select an option</option>
+                                @foreach($sections??array() as $section)
+                                    <option value="{{$section->id}}">{{$section->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">House_Co_Area</label>
+                            <select name="coarea_id" id="" class="form-control">
+                                <option value="">Select an option</option>
+                                @foreach($coareas??array() as $section)
+                                    <option value="{{$section->id}}">{{$section->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -171,4 +187,58 @@
         </div>
     </form>
 </div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyCyYM0wdvmHA5KRhEAl1R7rMp28eCHoGlo"  type="text/javascript"></script>
+
+<script>
+
+        $('#area_id').on('change',function(event){
+            event.preventDefault();
+            let sectionList = $('#section_id');
+            sectionList.children('option:not(:first)').remove();
+
+            $.ajax({
+                url: '{{ route('getsectionbyarea') }}',
+                type: 'GET',
+                data: {
+                    "area_id":$(this).val()
+                },
+                success: function (data) {
+                    console.log(data);
+                    jQuery.each(data, function(index, item) {
+                        sectionList.append(new Option(item.name, item.id));
+                    });
+                },
+                error: function (error) {
+                    console.log(error);
+
+                }
+            });
+        });
+        $('#section_id').on('change',function(event){
+            event.preventDefault();
+            let co_area_List = $('#coarea_id');
+            co_area_List.children('option:not(:first)').remove();
+
+            $.ajax({
+                url: '{{ route('getcoarea') }}',
+                type: 'GET',
+                data: {
+                    "section_id":$(this).val(),
+                    "area_id":$('#area_id').val()
+                },
+                success: function (data) {
+                    console.log(data);
+                    jQuery.each(data, function(index, item) {
+                        co_area_List.append(new Option(item.name, item.id));
+                    });
+                },
+                error: function (error) {
+                    console.log(error);
+
+                }
+            });
+        });
+    </script>
 @endsection

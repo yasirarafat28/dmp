@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,9 +17,8 @@ class UsersController extends Controller
     public function index()
     {
         //
-
-        $records = User::where('role','dmp')->orderBy('created_at','DESC')->get();
-        return view('dmp.user',compact('records'));
+        $records = User::where('role', 'dmp')->orderBy('created_at', 'DESC')->get();
+        return view('dmp.user', compact('records'));
     }
 
     /**

@@ -15,9 +15,9 @@ class AreaSectionController extends Controller
      */
     public function index()
     {
-        $areas = Area::where('status','active')->orderBy('created_at','DESC')->get();
-        $records = AreaSection::orderBy('created_at','DESC')->get();
-        return view('dmp.sections',compact('records','areas'));
+        $areas = Area::where('status', 'active')->orderBy('created_at', 'DESC')->get();
+        $records = AreaSection::orderBy('created_at', 'DESC')->get();
+        return view('dmp.sections', compact('records', 'areas'));
     }
 
     /**
@@ -39,9 +39,9 @@ class AreaSectionController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request,[
-            'name'=>'required',
-            'area_id'=>'required'
+        $this->validate($request, [
+            'name' => 'required',
+            'area_id' => 'required'
         ]);
 
         $area = new AreaSection();
@@ -83,9 +83,9 @@ class AreaSectionController extends Controller
     public function update(Request $request, $id)
     {
 
-        $this->validate($request,[
-            'name'=>'required',
-            'area_id'=>'required'
+        $this->validate($request, [
+            'name' => 'required',
+            'area_id' => 'required'
         ]);
 
         $area = AreaSection::find($id);
@@ -94,7 +94,6 @@ class AreaSectionController extends Controller
         $area->save();
 
         return back()->withSuccess('Section added successfully!');
-
     }
 
     /**
@@ -107,6 +106,15 @@ class AreaSectionController extends Controller
     {
         $area = AreaSection::destroy($id);
 
-        return back()->withSuccess('Section added successfully!');
+        return back()->withSuccess('Section deleted successfully!');
+    }
+
+    public function getsectionbyarea(Request $request)
+    {
+
+        $this->validate($request, [
+            'area_id' => 'required'
+        ]);
+        return AreaSection::where('area_id', $request->area_id)->get();
     }
 }

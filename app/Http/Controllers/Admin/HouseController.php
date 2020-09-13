@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Area;
+use App\AreaSection;
+use App\Coarea;
 use App\House;
 use App\User;
 use Illuminate\Http\Request;
@@ -15,12 +18,24 @@ class HouseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-
-        $records = House::with('owner')->orderBy('created_at', 'DESC')->get();
-        return view('dmp.house', compact('records'));
+        $areas = Area::where('status', 'active')->orderBy('created_at', 'DESC')->get();
+        $sections = AreaSection::orderBy('created_at', 'DESC')->get();
+        $coareas = Coarea::orderBy('created_at', 'DESC')->get();
+        $records = House::with('owner')->where(function ($q) use ($request) {
+            if (isset($request->area_id) && $request->area_id) {
+                $q->where('area', $request->area_id);
+            }
+            if (isset($request->section_id) && $request->section_id) {
+                $q->where('section', $request->section_id);
+            }
+            if (isset($request->coarea_id) && $request->coarea_id) {
+                $q->where('co_area', $request->coarea_id);
+            }
+        })->orderBy('created_at', 'DESC')->get();
+        return view('dmp.house', compact('records', 'areas', 'sections', 'coareas'));
     }
 
     /**
@@ -30,7 +45,8 @@ class HouseController extends Controller
      */
     public function create()
     {
-        //
+        $areas = Area::where('status', 'active')->orderBy('created_at', 'DESC')->get();
+        return view('dmp.house-create', compact('areas'));
     }
 
     /**
@@ -72,9 +88,9 @@ class HouseController extends Controller
         $house->owner_id = $user->id;
         $house->name = $request->House_Name;
         $house->house_number = $request->house_number;
-        $house->area = $request->area;
-        $house->co_area = $request->co_area;
-        $house->section = $request->section;
+        $house->area = $request->area_id;
+        $house->section = $request->section_id;
+        $house->co_area = $request->coarea_id;
         $house->gate_number = $request->gate_number;
         $house->road_number = $request->road_number;
         $house->flat_qty = $request->flat_qty;
@@ -146,9 +162,9 @@ class HouseController extends Controller
         $house->owner_id = $user->id;
         $house->name = $request->House_Name;
         $house->house_number = $request->house_number;
-        $house->area = $request->area;
-        $house->co_area = $request->co_area;
-        $house->section = $request->section;
+        $house->area = $request->area_id;
+        $house->section = $request->section_id;
+        $house->co_area = $request->coarea_id;
         $house->gate_number = $request->gate_number;
         $house->road_number = $request->road_number;
         $house->flat_qty = $request->flat_qty;

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Coarea;
+use App\AreaSection;
 use App\Area;
 use Illuminate\Http\Request;
 
-class AreaController extends Controller
+class CoareaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,10 @@ class AreaController extends Controller
      */
     public function index()
     {
-        //
-        $records = Area::orderBy('created_at', 'DESC')->get();
-        return view('dmp.area', compact('records'));
+        $areas = Area::where('status', 'active')->orderBy('created_at', 'DESC')->get();
+        $sections = AreaSection::orderBy('created_at', 'DESC')->get();
+        $records =  Coarea::orderBy('created_at', 'DESC')->get();
+        return view('dmp.coarea', compact('records', 'areas', 'sections'));
     }
 
     /**
@@ -27,7 +30,6 @@ class AreaController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -38,17 +40,19 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required',
+            'area_id' => 'required',
+            'section_id' => 'required'
         ]);
 
-        $area = new Area();
+        $area = new Coarea();
+        $area->area_id = $request->area_id;
+        $area->section_id = $request->section_id;
         $area->name = $request->name;
         $area->save();
 
-        return back()->withSuccess('Area added successfully!');
+        return back()->withSuccess('Section added successfully!');
     }
 
     /**
@@ -82,17 +86,19 @@ class AreaController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required',
+            'area_id' => 'required',
+            'section_id' => 'required'
         ]);
 
-        $area = Area::find($id);
+        $area = Coarea::find($id);
+        $area->area_id = $request->area_id;
+        $area->section_id = $request->section_id;
         $area->name = $request->name;
-        $area->status = $request->status;
         $area->save();
 
-        return back()->withSuccess('Area Update successfully!');
+        return back()->withSuccess('Section added successfully!');
     }
 
     /**
@@ -103,7 +109,24 @@ class AreaController extends Controller
      */
     public function destroy($id)
     {
-        $area = Area::destroy($id);
-        return back()->withSuccess('Area Delete successfully!');
+        $area = Coarea::destroy($id);
+
+        return back()->withSuccess('Section deleted successfully!');
+    }
+
+
+
+    public function getcoarea(Request $request)
+    {
+
+        $this->validate($request, [
+            'area_id' => 'required'
+        ]);
+
+        return Coarea::where('area_id', $request->area_id)->where(function ($q) use ($request) {
+            if (isset($request->section_id) && $request->section_id) {
+                $q->where('section_id', $request->section_id);
+            }
+        })->get();
     }
 }

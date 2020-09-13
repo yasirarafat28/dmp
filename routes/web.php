@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth', 'role:dmp'], 'prefix' => 'dmp'], function
     Route::resource('migrations', 'Admin\MigrationController');
     Route::resource('area', 'AreaController');
     Route::resource('sections', 'AreaSectionController');
+    Route::resource('coarea', 'CoareaController');
     Route::get('developers', 'HomeController@auth_developer');
 });
 
@@ -57,3 +58,8 @@ Route::group(['middleware' => ['auth', 'role:house_owner'], 'prefix' => 'house-o
     // Route::get('developers', 'HomeController@auth_developer');
 
 });
+
+
+Route::get('get-section-by-area', 'AreaSectionController@getsectionbyarea')->name('getsectionbyarea');
+
+Route::get('get-coarea', 'CoareaController@getcoarea')->name('getcoarea');

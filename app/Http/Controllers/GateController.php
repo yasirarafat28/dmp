@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Area;
 use Illuminate\Http\Request;
 
-class AreaController extends Controller
+class GateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,6 @@ class AreaController extends Controller
     public function index()
     {
         //
-        $records = Area::orderBy('created_at', 'DESC')->get();
-        return view('dmp.area', compact('records'));
     }
 
     /**
@@ -27,7 +24,6 @@ class AreaController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -39,16 +35,6 @@ class AreaController extends Controller
     public function store(Request $request)
     {
         //
-
-        $this->validate($request, [
-            'name' => 'required'
-        ]);
-
-        $area = new Area();
-        $area->name = $request->name;
-        $area->save();
-
-        return back()->withSuccess('Area added successfully!');
     }
 
     /**
@@ -82,17 +68,7 @@ class AreaController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $this->validate($request, [
-            'name' => 'required'
-        ]);
-
-        $area = Area::find($id);
-        $area->name = $request->name;
-        $area->status = $request->status;
-        $area->save();
-
-        return back()->withSuccess('Area Update successfully!');
+        //
     }
 
     /**
@@ -103,7 +79,6 @@ class AreaController extends Controller
      */
     public function destroy($id)
     {
-        $area = Area::destroy($id);
-        return back()->withSuccess('Area Delete successfully!');
+        //
     }
 }

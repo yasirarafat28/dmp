@@ -63,6 +63,8 @@ class ResidentController extends Controller
         $user->region = $request->region;
         $user->permanent_area = $request->permanent_area;
         $user->present_area = $request->present_area;
+        $user->floor_number = $request->floor_number;
+        $user->apartmant_number = $request->apartmant_number;
         $user->nid = $request->nid;
         $user->passport = $request->passport;
         $user->role = 'resident';
@@ -136,6 +138,8 @@ class ResidentController extends Controller
         $user->region = $request->region;
         $user->permanent_area = $request->permanent_area;
         $user->present_area = $request->present_area;
+        $user->floor_number = $request->floor_number;
+        $user->apartmant_number = $request->apartmant_number;
         $user->nid = $request->nid;
         $user->passport = $request->passport;
         $user->role = 'resident';

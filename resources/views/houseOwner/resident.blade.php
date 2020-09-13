@@ -136,6 +136,14 @@
                                                                   <input type="text" class="form-control" name="present_area">
                                                               </div>-->
                                                               <div class="form-group">
+                                                                  <label for="">Floor_number</label>
+                                                                  <input type="text" class="form-control" name="nid">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Apartmant_number</label>
+                                                                  <input type="text" class="form-control" name="nid">
+                                                              </div>
+                                                              <div class="form-group">
                                                                   <label for="">National_ID</label>
                                                                   <input type="text" class="form-control" name="nid">
                                                               </div>
@@ -171,7 +179,9 @@
 											<th>NID</th>
 											<th>Email</th>
 											<th>Phone</th>
-											<th>Permanent_Area</th>
+                                            <th>Permanent_Area</th>
+                                            <th>Floor_number</th>
+                                            <th>Apartmant_number</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -184,9 +194,11 @@
                                             <td>{{$item->resident->email??'n/a'}}</td>
                                             <td>{{$item->resident->phone??'n/a'}}</td>
                                             <td>{{$item->resident->permanent_area??'n/a'}}</td>
+                                            <td>{{$item->resident->floor_number??'n/a'}}</td>
+                                            <td>{{$item->resident->apartmant_number??'n/a'}}</td>
                                             <td class="">
                                                 <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="#" data-toggle="modal" data-target="#ShowModal_{{$item->house->id}}" class="btn btn-primary btn-sm">Show</a>
+                                                <a href="#" data-toggle="modal" data-target="#ShowModal_{{$item->id}}" class="btn btn-primary btn-sm">Show</a>
                                                 <!--{!! Form::open([
                                                                'method'=>'DELETE',
                                                                'url' => ['/house-owner/residents', $item->id],
@@ -296,6 +308,14 @@
                                                                                         <input type="text" class="form-control" name="present_area" value="{{$item->resident->present_area??'n/a'}}">
                                                                                     </div>-->
                                                                                     <div class="form-group">
+                                                                                        <label for="">Floor_number</label>
+                                                                                        <input type="text" class="form-control" name="floor_number" value="{{$item->resident->floor_number??'n/a'}}">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Apartmant_number</label>
+                                                                                        <input type="text" class="form-control" name="apartmant_number" value="{{$item->resident->apartmant_number??'n/a'}}">
+                                                                                    </div>
+                                                                                    <div class="form-group">
                                                                                         <label for="">National_ID</label>
                                                                                         <input type="text" class="form-control" name="nid" value="{{$item->resident->nid??'n/a'}}">
                                                                                     </div>
@@ -319,7 +339,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="modal fade" id="ShowModal_{{$item->house->id}}" tabindex="-1" role="dialog">
+                                                <div class="modal fade" id="ShowModal_{{$item->id}}" tabindex="-1" role="dialog">
                                                     <div class="modal-dialog modal-lg" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -426,6 +446,14 @@
                                                                         <td>Present_Area</td>
                                                                         <td>{{$item->resident->present_area??'Unknown'}}</td>
                                                                     </tr>-->
+                                                                    <tr>
+                                                                        <td>Floor_number</td>
+                                                                        <td>{{$item->resident->floor_number??'Unknown'}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Apartmant_number</td>
+                                                                        <td>{{$item->resident->apartmant_number??'Unknown'}}</td>
+                                                                    </tr>
                                                                     <tr>
                                                                         <td>National_ID</td>
                                                                         <td>{{$item->resident->nid??'Unknown'}}</td>

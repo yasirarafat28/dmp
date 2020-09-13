@@ -18,8 +18,8 @@ class HouseController extends Controller
     {
         //
 
-        $records = House::with('owner')->orderBy('created_at','DESC')->get();
-        return view('houseOwner.house',compact('records'));
+        $records = House::with('owner')->orderBy('created_at', 'DESC')->get();
+        return view('houseOwner.house', compact('records'));
     }
 
     /**
@@ -80,8 +80,6 @@ class HouseController extends Controller
         $house->save();
 
         return back()->withSuccess('Successfully Inserted');
-
-
     }
 
     /**
@@ -153,7 +151,6 @@ class HouseController extends Controller
         $house->save();
 
         return back()->withSuccess('Successfully Modified');
-
     }
 
     /**
@@ -164,7 +161,7 @@ class HouseController extends Controller
      */
     public function destroy($id)
     {
-         $user = House::destroy($id);
+        $user = House::destroy($id);
         return back()->withSuccess('Successfully Deleted');
     }
 }

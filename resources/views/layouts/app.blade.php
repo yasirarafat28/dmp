@@ -61,12 +61,12 @@
             <div class="justify-content-center text-white">
 
                 <div class="col-md-2">
-                    <img class="d-block img-fluid" src="/image/logo.png" alt="Second slide" style="height: 400px; width: 100%;height: 80px;" >
+                    <img class="d-block img-fluid" src="/image/logo11.png" alt="Second slide" style="height: 400px; width: 100%;height: 80px;" >
                 </div>
                 <div class="col-md-10">
 
                     <div class="text-center text white">
-                        <h1>DMP Resident Management</h1>
+                        <h1>DMP Residential Information System</h1>
                     </div>
                 </div>
             </div>
