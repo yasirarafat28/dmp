@@ -77,7 +77,7 @@ class RegisterController extends Controller
             // 'road_number' => ['required'],
             // 'flat_qty' => ['required'],
             // 'description' => ['required'],
-             ]);
+        ]);
     }
 
     /**
@@ -121,9 +121,9 @@ class RegisterController extends Controller
         $house->owner_id = $user->id;
         $house->name = $data['House_Name'];
         $house->house_number = $data['house_number'];
-        $house->area = $data['area'];
-        $house->co_area = $data['co_area'];
-        $house->section = $data['section'];
+        $house->area = $data['area_id'];
+        $house->section = $data['section_id'];
+        $house->co_area = $data['coarea_id'];
         $house->gate_number = $data['gate_number'];
         $house->road_number = $data['road_number'];
         $house->flat_qty = $data['flat_qty'];
