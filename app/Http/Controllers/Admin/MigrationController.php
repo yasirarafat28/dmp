@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\family;
 use App\Area;
 use App\House;
 use App\Migration;
@@ -18,6 +19,7 @@ class MigrationController extends Controller
      */
     public function index(Request $request)
     {
+        $member = family::all();
         $houses = House::all();
         $areas = Area::where('status', 'active')->orderBy('created_at', 'DESC')->get();
         $residents = User::where('role', 'resident')->get();
@@ -26,7 +28,7 @@ class MigrationController extends Controller
                 $q->where('house_id', $request->house_id);
             }
         })->orderBy('created_at', 'DESC')->get();
-        return view('dmp.migration', compact('houses', 'residents', 'records', 'areas'));
+        return view('dmp.migration', compact('houses', 'residents', 'records', 'areas', 'member'));
     }
 
     /**
@@ -112,5 +114,14 @@ class MigrationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function removeFamilyMember($id)
+    {
+
+        family::destroy($id);
+
+
+        return back()->withSuccess('Family member successfully removed!');
     }
 }

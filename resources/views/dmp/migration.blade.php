@@ -94,7 +94,8 @@
                                     <td>{{$row->description}}</td>
                                     <td>{{$row->status}}</td>
                                     <td class="btn-group">
-                                        <a href="#" data-toggle="modal" data-target="#ShowModal_{{$row->house->id??0}}" class="btn btn-primary btn-sm">Show</a>
+                                        <a href="#" data-toggle="modal" data-target="#MemberModal_{{$item->id??0}}" class="btn btn-primary btn-sm">Members</a>
+                                        <a href="#" data-toggle="modal" data-target="#ShowModal_{{$row->id??0}}" class="btn btn-primary btn-sm">Show</a>
                                         {!! Form::open([
                                                        'method'=>'DELETE',
                                                        'url' => ['/house-owner/residents', $row->id],
@@ -109,8 +110,55 @@
                                         {!! Form::close() !!}
 
 
+                                        <div class="modal fade" id="MemberModal_{{$item->id??0}}" tabindex="-1" role="dialog">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="title" id="CreateModal">Family Member</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <table class="table table-striped">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <td>Member Name</td>
+                                                                        <td>Relation</td>
+                                                                        <td>Age</td>
+                                                                        <td>Nid</td>
+                                                                        <td>Birth Code</td>
+                                                                        <td>Action</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    @forelse($item->resident->members??array() as $member)
+                                                                        <tr>
+                                                                            <td>{{$member->name}}</td>
+                                                                            <td>{{$member->relation}}</td>
+                                                                            <td>{{$member->age}}</td>
+                                                                            <td>{{$member->nid}}</td>
+                                                                            <td>{{$member->birth_code}}</td>
+                                                                            <td>
 
-                                        <div class="modal fade" id="ShowModal_{{$row->house->id??0}}" tabindex="-1" role="dialog">
+                                                                                <a href="/Admin/residents/remove/family-member/{{$member->id}}" class="btn btn-danger btn-sm">Remove</a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    @empty
+                                                                        <tr>
+                                                                            <td colspan="5">No member related with this resident!</td>
+                                                                        </tr>
+                                                                    @endforelse
+
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                        <div class="modal fade" id="ShowModal_{{$row->id??0}}" tabindex="-1" role="dialog">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">

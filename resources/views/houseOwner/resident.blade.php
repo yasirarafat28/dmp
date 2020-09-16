@@ -201,6 +201,7 @@
                                                 <a href="#" data-toggle="modal" data-target="#AddMemberModal_{{$item->id}}" class="btn btn-primary btn-sm">Add Member</a>
                                                 <a href="#" data-toggle="modal" data-target="#MemberModal_{{$item->id}}" class="btn btn-primary btn-sm">Members</a>
                                                 <a href="#" data-toggle="modal" data-target="#ShowModal_{{$item->id}}" class="btn btn-primary btn-sm">Show</a>
+
                                                 <!--{!! Form::open([
                                                                'method'=>'DELETE',
                                                                'url' => ['/house-owner/residents', $item->id],
@@ -358,12 +359,12 @@
                                                                     <div class="row justify-content-center">
                                                                         <div class="col-md-12">
                                                                             <div class="card">
-                                                                                <div class="card-header text-center">Resident_Personal Information</div>
+                                                                                <div class="card-header text-center">Resident_Family_member Personal Information</div>
 
                                                                                 <div class="card-body">
 
                                                                                     <div class="form-group">
-                                                                                        <label for="">Resident Name</label>
+                                                                                        <label for=""> Family_Member_Name</label>
                                                                                         <input type="text" class="form-control" name="name">
                                                                                     </div>
                                                                                     <div class="form-group">
@@ -412,7 +413,7 @@
                                                                 <table class="table table-striped">
                                                                     <thead>
                                                                     <tr>
-                                                                        <td>Name</td>
+                                                                        <td>Member Name</td>
                                                                         <td>Relation</td>
                                                                         <td>Age</td>
                                                                         <td>Nid</td>
@@ -446,8 +447,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
 
                                                 <div class="modal fade" id="ShowModal_{{$item->id}}" tabindex="-1" role="dialog">
                                                     <div class="modal-dialog modal-lg" role="document">
