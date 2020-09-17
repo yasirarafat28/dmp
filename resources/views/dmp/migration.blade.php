@@ -8,7 +8,6 @@
 
     $areas = \App\Area::where('status', 'active')->orderBy('created_at', 'DESC')->get();
 
-
 @endphp
 
     <div class="main-content" >
