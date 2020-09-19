@@ -78,6 +78,8 @@
                                     <th>House</th>
                                     <th>Resident Name</th>
                                     <th>Flat Details</th>
+                                    <th>Floor_number</th>
+                                    <th>Apartmant_number</th>
                                     <th>Comments</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -90,6 +92,8 @@
                                     <td>{{$row->house->name??'Unknown'}}</td>
                                     <td>{{$row->resident->name??'Unknown'}}</td>
                                     <td>{{$row->flat_qty}}</td>
+                                    <td>{{$row->resident->floor_number??'n/a'}}</td>
+                                    <td>{{$row->resident->apartmant_number??'n/a'}}</td>
                                     <td>{{$row->description}}</td>
                                     <td>{{$row->status}}</td>
                                     <td class="btn-group">
@@ -260,9 +264,17 @@
                                                                 <td>Permanent_Area</td>
                                                                 <td>{{$row->resident->permanent_area??'Unknown'}}</td>
                                                             </tr>
-                                                            <tr>
+                                                            <!--<tr>
                                                                 <td>Present_Area</td>
                                                                 <td>{{$row->resident->present_area??'Unknown'}}</td>
+                                                            </tr>-->
+                                                            <tr>
+                                                                <td>Floor_number</td>
+                                                                <td>{{$row->resident->floor_number??'Unknown'}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Apartmant_number</td>
+                                                                <td>{{$row->resident->apartmant_number??'Unknown'}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>National_ID</td>

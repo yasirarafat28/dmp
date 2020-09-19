@@ -130,9 +130,17 @@
                                                                   <label for="">Permanent_Area</label>
                                                                   <input type="text" class="form-control" name="permanent_area">
                                                               </div>
-                                                              <div class="form-group">
+                                                              <!--<div class="form-group">
                                                                   <label for="">Present_Area</label>
                                                                   <input type="text" class="form-control" name="present_area">
+                                                              </div>-->
+                                                              <div class="form-group">
+                                                                  <label for="">Floor_number</label>
+                                                                  <input type="text" class="form-control" name="floor_number">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="">Apartmant_number</label>
+                                                                  <input type="text" class="form-control" name="apartmant_number">
                                                               </div>
                                                               <div class="form-group">
                                                                   <label for="">National_ID</label>
@@ -169,8 +177,10 @@
 											<th>NID</th>
 											<th>Email</th>
 											<th>Phone</th>
-											<th>Permanent_Area</th>
-											<th>Present_Area</th>
+                                            <th>Permanent_Area</th>
+                                            <th>Floor_number</th>
+                                            <th>Apartmant_number</th>
+											<!--<th>Present_Area</th>-->
 											<th>Status</th>
 											<th>Action</th>
 										</tr>
@@ -184,7 +194,9 @@
                                             <td>{{$item->email}}</td>
                                             <td>{{$item->phone}}</td>
                                             <td>{{$item->permanent_area}}</td>
-                                            <td>{{$item->present_area}}</td>
+                                            <td>{{$item->floor_number}}</td>
+                                            <td>{{$item->apartmant_number}}</td>
+                                            <!--<td>{{$item->present_area}}</td>-->
                                             <td>{{ucfirst($item->status)}}</td>
                                             <td class="btn-group">
                                                 <a href="#" data-toggle="modal" data-target="#EditModal_{{$item->id}}" class="btn btn-primary btn-sm">Edit</a>
@@ -295,9 +307,17 @@
                                                                                         <input type="text" class="form-control" name="permanent_area" value="{{$item->permanent_area}}">
                                                                                     </div>
                                                                                     <div class="form-group">
+                                                                                        <label for="">Floor_number</label>
+                                                                                        <input type="text" class="form-control" name="floor_number" value="{{$item->floor_number}}">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="">Apartmant_number</label>
+                                                                                        <input type="text" class="form-control" name="apartmant_number" value="{{$item->apartmant_number}}">
+                                                                                    </div>
+                                                                                    <!--<div class="form-group">
                                                                                         <label for="">Present_Area</label>
                                                                                         <input type="text" class="form-control" name="present_area" value="{{$item->present_area}}">
-                                                                                    </div>
+                                                                                    </div>-->
                                                                                     <div class="form-group">
                                                                                         <label for="">National_ID</label>
                                                                                         <input type="text" class="form-control" name="nid" value="{{$item->nid}}">

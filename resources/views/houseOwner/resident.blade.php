@@ -137,11 +137,11 @@
                                                               </div>-->
                                                               <div class="form-group">
                                                                   <label for="">Floor_number</label>
-                                                                  <input type="text" class="form-control" name="nid">
+                                                                  <input type="text" class="form-control" name="floor_number">
                                                               </div>
                                                               <div class="form-group">
                                                                   <label for="">Apartmant_number</label>
-                                                                  <input type="text" class="form-control" name="nid">
+                                                                  <input type="text" class="form-control" name="apartmant_number">
                                                               </div>
                                                               <div class="form-group">
                                                                   <label for="">National_ID</label>

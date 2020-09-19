@@ -116,6 +116,12 @@ class MigrationController extends Controller
         //
     }
 
+    public function ShowMember($id)
+    {
+        //$item = family::orderBy('name', 'DESC')->get();
+        //return view('residents/show/family-member', ['item' => $item]);
+    }
+
     public function removeFamilyMember($id)
     {
 
