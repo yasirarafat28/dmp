@@ -143,7 +143,7 @@
         <footer class="col-md-12">
             <div class="footer-inner  p-5 col-md-12">
                 <p class="text-center">
-                    &copy; <span class="current-year"></span><span class="text-bold text-uppercase">Dhaka Metropolitan Police</span>. <span>Copyright © 2018 . SE Project Group -2</span>
+                    &copy; <span class="current-year"></span><span class="text-bold text-uppercase">Dhaka Metropolitan Police</span>. <span>Copyright © 2020 . Final Project</span>
                 </p>
             </div>
         </footer>
