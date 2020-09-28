@@ -97,7 +97,7 @@
                                     <td>{{$row->description}}</td>
                                     <td>{{$row->status}}</td>
                                     <td class="btn-group">
-                                        <a href="#" data-toggle="modal" data-target="#MemberModal_{{$item->id??0}}" class="btn btn-primary btn-sm">Members</a>
+                                        <a href="#" data-toggle="modal" data-target="#MemberModal_{{$row->resident->id??0}}" class="btn btn-primary btn-sm">Members</a>
                                         <a href="#" data-toggle="modal" data-target="#ShowModal_{{$row->id??0}}" class="btn btn-primary btn-sm">Show</a>
                                         {!! Form::open([
                                                        'method'=>'DELETE',
@@ -113,7 +113,7 @@
                                         {!! Form::close() !!}
 
 
-                                        <div class="modal fade" id="MemberModal_{{$item->id??0}}" tabindex="-1" role="dialog">
+                                        <div class="modal fade" id="MemberModal_{{$row->resident->id??0}}" tabindex="-1" role="dialog">
                                                     <div class="modal-dialog modal-lg" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -135,7 +135,7 @@
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                    @forelse($item->resident->members??array() as $member)
+                                                                    @forelse($row->resident->members??array() as $member)
                                                                         <tr>
                                                                             <td>{{$member->name}}</td>
                                                                             <td>{{$member->relation}}</td>
